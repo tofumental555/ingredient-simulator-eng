@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +8,7 @@
   <meta http-equiv="Expires" content="0">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2480117696040690"
      crossorigin="anonymous"></script>
-  <title>食材ポケモン厳選基準シミュレーター｜ポケモンスリープ攻略</title>
+  <title>Ingredient Pokémon Selection Simulator | Pokémon Sleep Strategy</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Nunito:wght@600;700;800&display=swap');
 
@@ -63,7 +63,7 @@
     h1 { font-family: 'Zen Maru Gothic', sans-serif; font-size: 22px; font-weight: 900; color: #fff; margin-bottom: 4px; }
     .pks-sub { font-size: 12.5px; color: var(--pks-text-dim); margin-bottom: 22px; line-height: 1.7; }
 
-    /* ステップバー */
+    /* Step bar */
     .pks-steps { display: flex; gap: 5px; margin-bottom: 22px; }
     .pks-step {
       flex: 1; text-align: center; font-size: 10.5px; font-weight: 800;
@@ -73,7 +73,7 @@
     .pks-step.active { background: linear-gradient(135deg, var(--pks-night-panel), var(--pks-night-panel-2)); border-color: var(--pks-purple); color: var(--pks-text); }
     .pks-step.done { background: rgba(127,217,168,0.1); border-color: var(--pks-border-green); color: var(--pks-green); }
 
-    /* パネル */
+    /* Panel */
     .pks-panel {
       background: linear-gradient(165deg, var(--pks-night-panel) 0%, var(--pks-night-panel-2) 100%);
       border: 1px solid var(--pks-border); border-radius: 20px; padding: 18px 16px; margin-bottom: 14px;
@@ -81,7 +81,7 @@
     }
     .pks-panel-title { font-family: 'Zen Maru Gothic', sans-serif; font-size: 13px; font-weight: 900; color: var(--pks-star-soft); margin-bottom: 14px; }
 
-    /* フォーム */
+    /* Form */
     .field { margin-bottom: 10px; }
     label { display: block; font-size: 11px; font-weight: 700; color: var(--pks-text-dim); margin-bottom: 4px; }
     .pks-sw { position: relative; }
@@ -96,7 +96,7 @@
     .pks-subs { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
     .pks-subs .pks-sw:last-child { grid-column: span 2; }
 
-    /* 編成カウンター */
+    /* Composition counter */
     .pks-comp-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -159,7 +159,7 @@
     .pks-comp-total.ok { background: rgba(127,217,168,0.1); color: var(--pks-green); border: 1px solid var(--pks-border-green); }
     .pks-comp-total.ng { background: rgba(255,126,126,0.08); color: var(--pks-red); border: 1px solid rgba(255,126,126,0.25); }
 
-    /* ポケモンカード */
+    /* Pokémon card */
     .pks-pokemon-card {
       background: rgba(22,16,41,0.5);
       border: 1.5px solid var(--pks-border);
@@ -170,14 +170,14 @@
     .pks-card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
     .pks-card-label { font-size: 11px; font-weight: 800; color: var(--pks-star); letter-spacing: 0.06em; }
 
-    /* タイプ別カラー */
+    /* Type colors */
     .pks-card-label.berry  { color: #f4a36f; }
     .pks-card-label.ing    { color: var(--pks-star); }
     .pks-card-label.skill  { color: #a0d4ff; }
     .pks-card-label.healer { color: var(--pks-green); }
     .pks-card-label.seling { color: #f4d03f; }
 
-    /* ボタン */
+    /* Buttons */
     .pks-btn-primary {
       width: 100%; font-family: 'Zen Maru Gothic', sans-serif; font-size: 14px; font-weight: 900;
       letter-spacing: 0.04em; color: #2a1f4d;
@@ -192,7 +192,7 @@
       cursor: pointer; margin-top: 8px; display: block;
     }
 
-    /* 料理行 */
+    /* Recipe row */
     .pks-recipe-row {
       display: grid;
       grid-template-columns: 1fr 1fr 64px 36px;
@@ -226,7 +226,7 @@
     .pks-total-line.ok { color: var(--pks-green); }
     .pks-total-line.ng { color: var(--pks-red); }
 
-    /* 結果 */
+    /* Results */
     .pks-verdict { text-align: center; padding: 18px 0 14px; }
     .pks-verdict-main { font-family: 'Zen Maru Gothic', sans-serif; font-size: 26px; font-weight: 900; margin-bottom: 3px; }
     .pks-verdict-main.ok { color: var(--pks-green); }
@@ -257,13 +257,13 @@
     .pks-footnote { text-align: center; font-size: 11px; color: var(--pks-text-dim); opacity: 0.6; margin-top: 24px; }
     .pks-hidden { display: none !important; }
 
-    /* 結果セクションタイトル */
+    /* Result section title */
     .pks-result-section-title {
       font-size: 11.5px; font-weight: 800; color: var(--pks-text-dim);
       margin: 12px 0 8px; letter-spacing: 0.03em;
     }
 
-    /* ポケモン別食材内訳 */
+    /* Per-Pokémon ingredient breakdown */
     .pks-pb-list { display: flex; flex-direction: column; gap: 8px; }
     .pks-pb-card {
       background: rgba(22,16,41,0.5);
@@ -284,7 +284,7 @@
     .pks-pb-ing { color: var(--pks-text-dim); }
     .pks-pb-val { color: var(--pks-green); font-weight: 700; }
 
-    /* トグルスイッチ */
+    /* Toggle switch */
     .pks-toggle-wrap {
       width: 52px; height: 28px;
       background: rgba(22,16,41,0.6);
@@ -312,7 +312,7 @@
       background: var(--pks-green);
     }
 
-    /* アコーディオン */
+    /* Accordion */
     .pks-accordion-btn {
       width: 100%; background: rgba(169,142,232,0.08);
       border: 1px solid var(--pks-border); border-radius: 8px;
@@ -329,7 +329,7 @@
 <div class="pks-wrap">
   <div class="pks-eyebrow">POKEMON SLEEP TOOLS</div>
 
-  <!-- ★ 目立つボタン化したナビ（ガイド / ブログ） --->
+  <!-- ★ Prominent nav buttons (Guide / Blog) --->
   <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:20px;">
     <a href="guide.html"
        style="padding:8px 16px;
@@ -341,7 +341,7 @@
               font-weight:700;
               text-decoration:none;
               box-shadow:0 2px 4px rgba(0,0,0,0.2);">
-      ガイド
+      Guide
     </a>
 
     <a href="https://www.tofumentalpapa.com/entry/pksl_homepage"
@@ -354,33 +354,33 @@
               font-weight:700;
               text-decoration:none;
               box-shadow:0 2px 4px rgba(0,0,0,0.2);">
-      ブログ
+      Blog
     </a>
   </div>
 
-  <h1>食材料ポケモン厳選基準シミュレーター</h1>
-  <p class="pks-sub">食材料ポケモンの厳選基準を定量的に判断するシミュレーターです。</p>
+  <h1>Ingredient Pokémon Selection Simulator</h1>
+  <p class="pks-sub">A simulator that quantitatively evaluates your criteria for selecting ingredient Pokémon.</p>
 
-  <!-- ★ 下の重複ナビは削除済み -->
+  <!-- ★ Duplicate nav below has been removed -->
 </div>
 
 
 
   <div class="pks-steps">
-    <div class="pks-step active" id="stepTab0">① 編成</div>
-    <div class="pks-step" id="stepTab1">② ポケモン</div>
-    <div class="pks-step" id="stepTab2">③ 料理</div>
-    <div class="pks-step" id="stepTab3">④ 結果</div>
+    <div class="pks-step active" id="stepTab0">① Team</div>
+    <div class="pks-step" id="stepTab1">② Pokémon</div>
+    <div class="pks-step" id="stepTab2">③ Dishes</div>
+    <div class="pks-step" id="stepTab3">④ Results</div>
   </div>
 
-  <!-- ===== STEP 0: 編成設定 ===== -->
+  <!-- ===== STEP 0: Team Setup ===== -->
   <div id="step0">
     <div class="pks-panel">
-      <div class="pks-panel-title">🧩 チーム編成（合計5体）</div>
+      <div class="pks-panel-title">🧩 Team Composition (5 total)</div>
       <div class="pks-comp-grid">
         <div class="pks-comp-item">
           <span class="pks-comp-emoji">🍒</span>
-          <div class="pks-comp-label">きのみ</div>
+          <div class="pks-comp-label">Berry</div>
           <div class="pks-counter">
             <button class="pks-counter-btn" onclick="changeComp('berry',-0.5)">−</button>
             <span class="pks-counter-val" id="compVal_berry">0</span>
@@ -389,7 +389,7 @@
         </div>
         <div class="pks-comp-item">
           <span class="pks-comp-emoji">🍳</span>
-          <div class="pks-comp-label">食材</div>
+          <div class="pks-comp-label">Ingredient</div>
           <div class="pks-counter">
             <button class="pks-counter-btn" onclick="changeComp('ing',-0.5)">−</button>
             <span class="pks-counter-val" id="compVal_ing">0</span>
@@ -398,7 +398,7 @@
         </div>
         <div class="pks-comp-item">
           <span class="pks-comp-emoji">⚡</span>
-          <div class="pks-comp-label">スキル</div>
+          <div class="pks-comp-label">Skill</div>
           <div class="pks-counter">
             <button class="pks-counter-btn" onclick="changeComp('skill',-0.5)">−</button>
             <span class="pks-counter-val" id="compVal_skill">0</span>
@@ -408,14 +408,14 @@
 
 
       </div>
-      <div class="pks-comp-total ng" id="compTotal">合計 0 / 5 体</div>
+      <div class="pks-comp-total ng" id="compTotal">Total 0 / 5</div>
     </div>
     <div class="pks-panel" style="margin-top:0">
-      <div class="pks-panel-title">🎫 いいキャンプチケット</div>
+      <div class="pks-panel-title">🎫 Good Camp Ticket</div>
       <div style="display:flex;align-items:center;justify-content:space-between;">
         <div>
-          <div style="font-size:13px;font-weight:700;color:var(--pks-text);">使用する</div>
-          <div style="font-size:11px;color:var(--pks-text-dim);margin-top:2px;">お手伝いスピード×1.2倍（interval÷1.2）</div>
+          <div style="font-size:13px;font-weight:700;color:var(--pks-text);">Use it</div>
+          <div style="font-size:11px;color:var(--pks-text-dim);margin-top:2px;">Helping Speed ×1.2 (interval ÷1.2)</div>
         </div>
         <div class="pks-toggle-wrap" onclick="toggleCamp()" id="campToggleWrap">
           <div class="pks-toggle" id="campToggle"></div>
@@ -424,22 +424,22 @@
     </div>
 
     <div class="pks-panel">
-      <div class="pks-panel-title">😴 睡眠中のタップ設定</div>
+      <div class="pks-panel-title">😴 Sleep-Time Tap Setting</div>
       <p style="font-size:12px;color:var(--pks-text-dim);margin-bottom:10px;">
-        1日8.5時間睡眠と仮定。起床中（15.5時間）は毎分タップ前提のため所持数あふれは発生しません。
+        Assumes 8.5 hours of sleep per day. While awake (15.5 hours), tapping every minute is assumed, so inventory never overflows.
       </p>
       <div style="display:flex;align-items:center;justify-content:space-between;">
         <div>
-          <div style="font-size:13px;font-weight:700;color:var(--pks-text);">睡眠中も毎分タップする</div>
-          <div style="font-size:11px;color:var(--pks-text-dim);margin-top:2px;">OFFの場合、所持数上限到達後はきのみ確率100%（食材ロス発生）</div>
+          <div style="font-size:13px;font-weight:700;color:var(--pks-text);">Tap every minute during sleep too</div>
+          <div style="font-size:11px;color:var(--pks-text-dim);margin-top:2px;">When OFF, once inventory is full, berry rate becomes 100% (ingredients are lost)</div>
         </div>
         <div class="pks-toggle-wrap on" onclick="toggleSleepTap()" id="sleepTapToggleWrap">
           <div class="pks-toggle" id="sleepTapToggle"></div>
         </div>
       </div>
     </div>
-    <button class="pks-btn-primary" id="btnToStep1" disabled>次へ：ポケモンを登録する →</button>
-<!-- 注意書き -->
+    <button class="pks-btn-primary" id="btnToStep1" disabled>Next: Register Pokémon →</button>
+<!-- Notes -->
   <div style="
     background: rgba(169,142,232,0.08);
     border: 1px solid rgba(169,142,232,0.3);
@@ -450,215 +450,221 @@
     color: var(--pks-text-dim);
     line-height: 1.85;
   ">
-    <div style="font-size:12.5px;font-weight:800;color:var(--pks-star-soft);margin-bottom:8px;">📋 計算前提・注意事項</div>
+    <div style="font-size:12.5px;font-weight:800;color:var(--pks-star-soft);margin-bottom:8px;">📋 Calculation Assumptions & Notes</div>
     <div>
-      <b style="color:var(--pks-text);">【計算前提】</b><br>
-      ・ 元気は常に <b style="color:var(--pks-green);">81%以上</b> を維持している想定です<br>
-      ・ <b style="color:var(--pks-green);">毎分タップ</b>（ログイン頻度高）を前提としています<br>
-      ・ 食材の所持数はあふれていない前提です<br>
-      ・ 24時間・7日間フル稼働での計算です<br>
+      <b style="color:var(--pks-text);">[Calculation assumptions]</b><br>
+      ・ Assumes energy is always kept at <b style="color:var(--pks-green);">81% or higher</b><br>
+      ・ Assumes <b style="color:var(--pks-green);">tapping every minute</b> (frequent logins)<br>
+      ・ Assumes ingredient inventory never overflows<br>
+      ・ Calculated for 24 hours a day, fully active for 7 days<br>
     </div>
     <div style="margin-top:8px;">
-      <b style="color:var(--pks-text);">【お手伝いスピードボーナスについて】</b><br>
-      ・ <b>おてスピM(+14%)・おてスピS(+7%)</b> は持つポケモン<b>本人のみ</b>に適用<br>
-      ・ <b>おてぼ(+5%)</b> はチームに<b>編成されている間</b>、全員のスピードを上昇<br>
-      ・ 各ポケモンへの適用ボーナス = 自分のおてスピM/S + チームのおてぼ合計<br>
-      ・ この合算が <b style="color:var(--pks-star);">35%を超えたら35%</b> に丸めます<br>
-      ・ 例：おてぼ3体編成中(+15%) + 自分がおてスピM+S(+21%) = 36% → <b>35%</b><br>
-      ・ 食材ポケモンは交代運用のため、おてぼは枠数÷登録体数で按分計算します<br>
+      <b style="color:var(--pks-text);">[About the Helping Speed bonus]</b><br>
+      ・ <b>Helping Speed M (+14%) and Helping Speed S (+7%)</b> only apply to the Pokémon that has them<br>
+      ・ <b>Helping Bonus (+5%)</b> raises the speed of every Pokémon on the team while it's on the team<br>
+      ・ The bonus applied to each Pokémon = its own Helping Speed M/S + the team's total Helping Bonus<br>
+      ・ If this total exceeds <b style="color:var(--pks-star);">35%, it's capped at 35%</b><br>
+      ・ Example: 3 Helping Bonus Pokémon on the team (+15%) + your own Helping Speed M+S (+21%) = 36% → <b>capped at 35%</b><br>
+      ・ Since ingredient Pokémon rotate in and out, Helping Bonus is prorated by (slots ÷ registered Pokémon)<br>
     </div>
     <div style="margin-top:8px;">
-      <b style="color:var(--pks-text);">【その他】</b><br>
-      ・ 食材確率はポケモンの基礎値×(1+食材確率M×36%+S×18%) で計算<br>
-      ・ いいキャンプチケット使用時はお手伝いスピード×1.2倍<br>
-      ・ 週頭在庫（前週の持ち越し食材）は料理登録画面で入力できます<br>
-      ・ 計算結果は目安です。実際のゲームと若干異なる場合があります
+      <b style="color:var(--pks-text);">[Other notes]</b><br>
+      ・ Ingredient find rate = base rate × (1 + Ingredient Finder M×36% + S×18%)<br>
+      ・ Using a Good Camp Ticket multiplies Helping Speed by ×1.2<br>
+      ・ Starting-of-week stock (ingredients carried over from last week) can be entered on the dish registration screen<br>
+      ・ These results are estimates and may differ slightly from the actual game
     </div>
     <div style="margin-top:8px;">
-      <b style="color:var(--pks-text);">【所持数あふれについて】</b><br>
-      ・ 1日＝起床15.5時間（毎分タップ・あふれなし）＋睡眠8.5時間<br>
-      ・ 睡眠中「毎分タップ」OFFの場合、所持数上限到達後は<br>
-      　食材を取れず<b style="color:var(--pks-star);">きのみ確率100%</b>になります（食材ロス）<br>
-      ・ 最大所持数アップS(+6)・M(+12)・L(+18) サブスキルに対応<br>
-      ・ 最大所持数データが未登録のポケモンはあふれ計算をスキップします
+      <b style="color:var(--pks-text);">[About inventory overflow]</b><br>
+      ・ 1 day = 15.5 awake hours (tap every minute, no overflow) + 8.5 sleep hours<br>
+      ・ If "tap every minute during sleep" is OFF, once inventory is full,<br>
+      　no more ingredients are gathered and the <b style="color:var(--pks-star);">berry rate becomes 100%</b> (ingredients are lost)<br>
+      ・ Supports the Inventory Up S (+6), M (+12), and L (+18) sub-skills<br>
+      ・ Pokémon with no registered max-inventory data skip the overflow calculation
     </div>
     <div style="margin-top:8px;">
-      <b style="color:var(--pks-text);">【食材セレクトについて】</b><br>
-      ・ 食材セレクトポケモンのスキルレベルは<b style="color:var(--pks-star);">最大レベル前提</b>で試算しています<br>
-      ・ 睡眠中タップなしの場合、スキル発動は<br>
-      　きのみ・食材タイプ：<b>1日1回まで</b>、スキルタイプ：<b>1日2回まで</b>で計算<br>
+      <b style="color:var(--pks-text);">[About Ingredient Select]</b><br>
+      ・ For Ingredient Select Pokémon, skill level is assumed to be at <b style="color:var(--pks-star);">max level</b><br>
+      ・ With no tapping during sleep, skill activations are calculated as:<br>
+      　up to <b>1/day</b> for Berry/Ingredient types, up to <b>2/day</b> for Skill types<br>
     </div>
   </div>
 </div>
 
-  <!-- ===== STEP 1: ポケモン登録 ===== -->
+  <!-- ===== STEP 1: Register Pokémon ===== -->
   <div id="step1" class="pks-hidden">
     <div id="pokemonSections"></div>
-    <button class="pks-btn-secondary" id="btnBack0">← 編成を修正</button>
-    <button class="pks-btn-primary" id="btnToStep2">次へ：料理を登録する →</button>
+    <button class="pks-btn-secondary" id="btnBack0">← Edit Team</button>
+    <button class="pks-btn-primary" id="btnToStep2">Next: Register Dishes →</button>
   </div>
 
-  <!-- ===== STEP 2: 料理登録 ===== -->
+  <!-- ===== STEP 2: Register Dishes ===== -->
   <div id="step2" class="pks-hidden">
     <div class="pks-panel">
-      <div class="pks-panel-title">🍽️ 21食分の料理を登録</div>
+      <div class="pks-panel-title">🍽️ Register Your 21 Meals</div>
       <p style="font-size:12px;color:var(--pks-text-dim);margin-bottom:12px;">
-        ジャンルと料理名を選び、食数を入力してください。
+        Choose a category and dish name, then enter the number of servings.
       </p>
       <div id="recipeList"></div>
-      <button class="pks-btn-add" id="btnAddRecipe">＋ 料理を追加</button>
-      <div class="pks-total-line ng" id="recipeTotal">合計：0 食</div>
+      <button class="pks-btn-add" id="btnAddRecipe">＋ Add a Dish</button>
+      <div class="pks-total-line ng" id="recipeTotal">Total: 0 meals</div>
     </div>
     <div class="pks-panel">
-      <div class="pks-panel-title">📦 週頭の食材在庫（任意）</div>
+      <div class="pks-panel-title">📦 Starting-of-Week Ingredient Stock (optional)</div>
       <p style="font-size:12px;color:var(--pks-text-dim);margin-bottom:12px;">
-        前週から持ち越した食材があれば入力してください。0のままでもOKです。
+        If you have ingredients carried over from last week, enter them here. It's fine to leave this at 0.
       </p>
       <div id="stockList"></div>
-      <button class="pks-btn-add" id="btnAddStock">＋ 在庫を追加</button>
+      <button class="pks-btn-add" id="btnAddStock">＋ Add Stock</button>
     </div>
-    <button class="pks-btn-secondary" id="btnBack1">← ポケモンを修正</button>
-    <button class="pks-btn-primary" id="btnToStep3">計算する →</button>
+    <button class="pks-btn-secondary" id="btnBack1">← Edit Pokémon</button>
+    <button class="pks-btn-primary" id="btnToStep3">Calculate →</button>
 </div>
 
-  <!-- ===== STEP 3: 結果 ===== -->
+  <!-- ===== STEP 3: Results ===== -->
   <div id="step3" class="pks-hidden">
     <div class="pks-panel">
       <div id="resultContent"></div>
     </div>
-    <button class="pks-btn-secondary" id="btnBack2">← 料理を修正</button>
-    <button class="pks-btn-secondary" id="btnRestart">最初からやり直す</button>
+    <button class="pks-btn-secondary" id="btnBack2">← Edit Dishes</button>
+    <button class="pks-btn-secondary" id="btnRestart">Start Over</button>
 </div>
 
-  <p class="pks-footnote">豆腐メンタルパパのポケモンスリープ攻略ツール</p>
+  <p class="pks-footnote">Tofu Mental Papa's Pokémon Sleep Strategy Tools</p>
 </div>
 
 <script>
-/* ===== レシピデータ ===== */
+/* ===== Recipe data ===== */
 const RECIPE_DATA = {
-  "genres": ["カレー","サラダ","デザート"],
+  "genres": ["Curry","Salad","Dessert"],
   "recipes": {
-    "カレー": {
-      "とくせんリンゴカレー": {"とくせんリンゴ":7},
-      "あぶりテールカレー": {"おいしいしっぽ":8,"げきからハーブ":25},
-      "サンパワートマトカレー": {"あんみんトマト":10,"げきからハーブ":5},
-      "ぜったいねむりバターカレー": {"ほっこりポテト":18,"あんみんトマト":15,"リラックスカカオ":12,"モーモーミルク":10},
-      "からくちネギもりカレー": {"ふといナガネギ":14,"あったかジンジャー":10,"げきからハーブ":8},
-      "キノコのほうしカレー": {"あじわいキノコ":14,"ほっこりポテト":9},
-      "おやこあいカレー": {"あまいミツ":12,"とくせんリンゴ":11,"とくせんエッグ":8,"ほっこりポテト":4},
-      "満腹チーズバーグカレー": {"モーモーミルク":8,"マメミート":8},
-      "ほっこりホワイトシチュー": {"モーモーミルク":10,"ほっこりポテト":8,"あじわいキノコ":4},
-      "たんじゅんホワイトシチュー": {"モーモーミルク":7},
-      "マメバーグカレー": {"マメミート":7},
-      "ベイビィハニーカレー": {"あまいミツ":7},
-      "ニンジャカレー": {"ワカクサ大豆":24,"マメミート":9,"ふといナガネギ":12,"あじわいキノコ":5},
-      "ワカクサカレーパン": {"ワカクサ大豆":8,"ピュアなオイル":15,"げきからハーブ":20,"あったかジンジャー":20},
-      "ひでりカツレツカレー": {"マメミート":10,"ピュアなオイル":5},
-      "とけるオムカレー": {"とくせんエッグ":10,"あんみんトマト":6},
-      "ビルドアップマメカレー": {"ワカクサ大豆":12,"マメミート":6,"げきからハーブ":4,"とくせんエッグ":4},
-      "じゅうなんコーンシチュー": {"ワカクサコーン":14,"モーモーミルク":8,"ほっこりポテト":8},
-      "れんごくコーンキーマカレー": {"げきからハーブ":27,"マメミート":24,"ワカクサコーン":14,"あったかジンジャー":12},
-      "ピヨピヨパンチ辛口カレー": {"めざましコーヒー":11,"げきからハーブ":11,"あまいミツ":11},
-      "めざめるパワーシチュー": {"ワカクサ大豆":28,"あんみんトマト":25,"あじわいキノコ":23,"めざましコーヒー":16},
-      "いあいぎりすき焼きカレー": {"ふといナガネギ":27,"マメミート":26,"あまいミツ":26,"とくせんエッグ":22},
-      "なりきりバケッチャシチュー": {"ずっしりカボチャ":10,"マメミート":16,"ほっこりポテト":18,"あじわいキノコ":25},
-      "とびはねるカレーうどん": {"げきからハーブ":22,"マメミート":20,"あったかジンジャー":39,"あじわいキノコ":31},
-      "しんりょくアボカドグラタン": {"つやつや アボカド":22,"ほっこりポテト":20,"モーモーミルク":41,"ピュアなオイル":32}
+    "Curry": {
+      "Fancy Apple Curry": {"Fancy Apple":7},
+      "Grilled Tail Curry": {"Slowpoke Tail":8,"Fiery Herb":25},
+      "\"Solar Power\" Tomato Curry": {"Snoozy Tomato":10,"Fiery Herb":5},
+      "\"Dream Eater\" Butter Curry": {"Soft Potato":18,"Snoozy Tomato":15,"Soothing Cacao":12,"Moomoo Milk":10},
+      "Spicy Leek Curry": {"Large Leek":14,"Warming Ginger":10,"Fiery Herb":8},
+      "\"Spore\" Mushroom Curry": {"Tasty Mushroom":14,"Soft Potato":9},
+      "\"Egg Bomb\" Curry": {"Honey":12,"Fancy Apple":11,"Fancy Egg":8,"Soft Potato":4},
+      "Hearty Cheeseburger Curry": {"Moomoo Milk":8,"Bean Sausage":8},
+      "Soft Potato Chowder": {"Moomoo Milk":10,"Soft Potato":8,"Tasty Mushroom":4},
+      "Simple Chowder": {"Moomoo Milk":7},
+      "Beanburger Curry": {"Bean Sausage":7},
+      "Mild Honey Curry": {"Honey":7},
+      "Ninja Curry": {"Greengrass Soybeans":24,"Bean Sausage":9,"Large Leek":12,"Tasty Mushroom":5},
+      "Greengrass Curry Bread": {"Greengrass Soybeans":8,"Pure Oil":15,"Fiery Herb":20,"Warming Ginger":20},
+      "\"Drought\" Katsu Curry": {"Bean Sausage":10,"Pure Oil":5},
+      "Melty Omelette Curry": {"Fancy Egg":10,"Snoozy Tomato":6},
+      "\"Bulk Up\" Bean Curry": {"Greengrass Soybeans":12,"Bean Sausage":6,"Fiery Herb":4,"Fancy Egg":4},
+      "\"Limber\" Corn Stew": {"Greengrass Corn":14,"Moomoo Milk":8,"Soft Potato":8},
+      "\"Inferno\" Corn Keema Curry": {"Fiery Herb":27,"Bean Sausage":24,"Greengrass Corn":14,"Warming Ginger":12},
+      "\"Dizzy Punch\" Spicy Curry": {"Rousing Coffee":11,"Fiery Herb":11,"Honey":11},
+      "\"Hidden Power\" Perk-Up Stew": {"Greengrass Soybeans":28,"Snoozy Tomato":25,"Tasty Mushroom":23,"Rousing Coffee":16},
+      "\"Cut\" Sukiyaki Curry": {"Large Leek":27,"Bean Sausage":26,"Honey":26,"Fancy Egg":22},
+      "\"Role Play\" Pumpkaboo Stew": {"Plump Pumpkin":10,"Bean Sausage":16,"Soft Potato":18,"Tasty Mushroom":25},
+      "\"Bounce\" Curry Udon": {"Fiery Herb":22,"Bean Sausage":20,"Warming Ginger":39,"Tasty Mushroom":31},
+      "\"Overgrow\" Avocado Gratin": {"Glossy Avocado":22,"Soft Potato":20,"Moomoo Milk":41,"Pure Oil":32}
     },
-    "サラダ": {
-      "とくせんリンゴサラダ": {"とくせんリンゴ":8},
-      "マメハムサラダ": {"マメミート":8},
-      "あんみんトマトサラダ": {"あんみんトマト":8},
-      "ゆきかきシーザーサラダ": {"モーモーミルク":10,"マメミート":6},
-      "ねっぷうとうふサラダ": {"ワカクサ大豆":10,"げきからハーブ":6},
-      "うるおいとうふサラダ": {"ワカクサ大豆":15,"あんみんトマト":9},
-      "みだれづきコーンサラダ": {"ワカクサコーン":9,"ピュアなオイル":8},
-      "メロメロりんごのチーズサラダ": {"とくせんリンゴ":15,"モーモーミルク":5,"ピュアなオイル":3},
-      "めんえきネギサラダ": {"ふといナガネギ":10,"あったかジンジャー":5},
-      "モーモーカプレーゼ": {"モーモーミルク":12,"ピュアなオイル":5,"あんみんトマト":6},
-      "ばかぢからワイルドサラダ": {"マメミート":9,"ほっこりポテト":3,"とくせんエッグ":5,"あったかジンジャー":6},
-      "ムラっけチョコミートサラダ": {"リラックスカカオ":14,"マメミート":9},
-      "くいしんぼうポテトサラダ": {"ほっこりポテト":14,"とくせんエッグ":9,"マメミート":7,"とくせんリンゴ":6},
-      "オーバーヒートサラダ": {"げきからハーブ":17,"あんみんトマト":8,"あったかジンジャー":10},
-      "キノコのほうしサラダ": {"あじわいキノコ":17,"あんみんトマト":8,"ピュアなオイル":8},
-      "ヤドンテールのペッパーサラダ": {"おいしいしっぽ":10,"げきからハーブ":10,"ピュアなオイル":15},
-      "めいそうスイートサラダ": {"とくせんリンゴ":21,"あまいミツ":16,"ワカクサコーン":12},
-      "ニンジャサラダ": {"ワカクサ大豆":19,"ふといナガネギ":15,"あったかジンジャー":11,"あじわいキノコ":12},
-      "ワカクササラダ": {"ほっこりポテト":9,"ピュアなオイル":22,"あんみんトマト":14,"ワカクサコーン":17},
-      "クロスチョップドサラダ": {"マメミート":15,"とくせんエッグ":20,"あんみんトマト":10,"ワカクサコーン":11},
-      "まけんきコーヒーサラダ": {"めざましコーヒー":28,"マメミート":28,"ピュアなオイル":22,"ほっこりポテト":22},
-      "ごろごろねっとうサラダ": {"ほっこりポテト":30,"あじわいキノコ":27,"ワカクサコーン":18,"ずっしりカボチャ":20},
-      "じならしワカモレチップス": {"ワカクサ大豆":22,"げきからハーブ":30,"ワカクサコーン":25,"つやつやアボカド":28},
-      "りんごさんヨーグルトサラダ": {"モーモーミルク":18,"とくせんリンゴ":28,"とくせんエッグ":35,"あんみんトマト":23},
-      "はなふぶきミモザサラダ": {"マメミート":12,"ほっこりポテト":15,"ピュアなオイル":17,"とくせんエッグ":25}
+    "Salad": {
+      "Fancy Apple Salad": {"Fancy Apple":8},
+      "Bean Ham Salad": {"Bean Sausage":8},
+      "Snoozy Tomato Salad": {"Snoozy Tomato":8},
+      "\"Snow Cloak\" Caesar Salad": {"Moomoo Milk":10,"Bean Sausage":6},
+      "\"Heat Wave\" Tofu Salad": {"Greengrass Soybeans":10,"Fiery Herb":6},
+      "\"Water Veil\" Tofu Salad": {"Greengrass Soybeans":15,"Snoozy Tomato":9},
+      "\"Fury Attack\" Corn Salad": {"Greengrass Corn":9,"Pure Oil":8},
+      "\"Dazzling\" Apple Cheese Salad": {"Fancy Apple":15,"Moomoo Milk":5,"Pure Oil":3},
+      "\"Immunity\" Leek Salad": {"Large Leek":10,"Warming Ginger":5},
+      "Moomoo Caprese Salad": {"Moomoo Milk":12,"Pure Oil":5,"Snoozy Tomato":6},
+      "\"Superpower\" Extreme Salad": {"Bean Sausage":9,"Soft Potato":3,"Fancy Egg":5,"Warming Ginger":6},
+      "\"Contrary\" Chocolate Meat Salad": {"Soothing Cacao":14,"Bean Sausage":9},
+      "\"Gluttony\" Potato Salad": {"Soft Potato":14,"Fancy Egg":9,"Bean Sausage":7,"Fancy Apple":6},
+      "\"Overheat\" Ginger Salad": {"Fiery Herb":17,"Snoozy Tomato":8,"Warming Ginger":10},
+      "\"Spore\" Mushroom Salad": {"Tasty Mushroom":17,"Snoozy Tomato":8,"Pure Oil":8},
+      "Slowpoke Tail Pepper Salad": {"Slowpoke Tail":10,"Fiery Herb":10,"Pure Oil":15},
+      "\"Calm Mind\" Fruit Salad": {"Fancy Apple":21,"Honey":16,"Greengrass Corn":12},
+      "Ninja Salad": {"Greengrass Soybeans":19,"Large Leek":15,"Warming Ginger":11,"Tasty Mushroom":12},
+      "Greengrass Salad": {"Soft Potato":9,"Pure Oil":22,"Snoozy Tomato":14,"Greengrass Corn":17},
+      "\"Cross Chop\" Salad": {"Bean Sausage":15,"Fancy Egg":20,"Snoozy Tomato":10,"Greengrass Corn":11},
+      "\"Defiant\" Coffee-Dressed Salad": {"Rousing Coffee":28,"Bean Sausage":28,"Pure Oil":22,"Soft Potato":22},
+      "\"Scald\" Chunky Salad": {"Soft Potato":30,"Tasty Mushroom":27,"Greengrass Corn":18,"Plump Pumpkin":20},
+      "\"Bulldoze\" Guacamole and Chips": {"Greengrass Soybeans":22,"Fiery Herb":30,"Greengrass Corn":25,"Glossy Avocado":28},
+      "\"Apple Acid\" Yogurt-Dressed Salad": {"Moomoo Milk":18,"Fancy Apple":28,"Fancy Egg":35,"Snoozy Tomato":23},
+      "\"Petal Blizzard\" Layered Salad": {"Bean Sausage":12,"Soft Potato":15,"Pure Oil":17,"Fancy Egg":25},
+      "Luscious Avocado Salad": {"Glossy Avocado":14,"Greengrass Soybeans":18,"Pure Oil":10}
     },
-    "デザート": {
-      "みつあつめチョコワッフル": {"あまいミツ":38,"ピュアなオイル":28,"ワカクサコーン":28,"リラックスカカオ":21},
-      "ドキドキこわいかおパンケーキ": {"あまいミツ":32,"あんみんトマト":29,"とくせんエッグ":24,"ずっしりカボチャ":18},
-      "ドオーのエクレア": {"リラックスカカオ":30,"モーモーミルク":26,"めざましコーヒー":24,"あまいミツ":22},
-      "スパークスパイスコーラ": {"とくせんリンゴ":35,"ふといナガネギ":20,"あったかジンジャー":20,"めざましコーヒー":12},
-      "フラワーギフトマカロン": {"とくせんエッグ":25,"リラックスカカオ":25,"あまいミツ":17,"モーモーミルク":10},
-      "おちゃかいコーンスコーン": {"とくせんリンゴ":20,"あったかジンジャー":20,"ワカクサコーン":18,"モーモーミルク":9},
-      "グラスミキサースムージー": {"つやつやアボカド":18,"あんみんトマト":16,"モーモーミルク":14},
-      "プリンのプリンアラモード": {"あまいミツ":20,"とくせんエッグ":15,"とくせんリンゴ":10,"モーモーミルク":10},
-      "かたやぶりコーンティラミス": {"めざましコーヒー":14,"ワカクサコーン":14,"モーモーミルク":12},
-      "はやおきコーヒーゼリー": {"めざましコーヒー":16,"あまいミツ":12,"モーモーミルク":14},
-      "だいばくはつポップコーン": {"ワカクサコーン":15,"ピュアなオイル":14,"モーモーミルク":7},
-      "ちからもちソイドーナッツ": {"ワカクサ大豆":16,"ピュアなオイル":12,"リラックスカカオ":7},
-      "ネロリのデトックスティー": {"とくせんリンゴ":15,"あったかジンジャー":11,"あじわいキノコ":9},
-      "ふくつのジンジャークッキー": {"あまいミツ":14,"あったかジンジャー":12,"リラックスカカオ":5,"とくせんエッグ":4},
-      "あくまのキッスフルーツオレ": {"とくせんリンゴ":11,"モーモーミルク":9,"リラックスカカオ":8,"あまいミツ":7},
-      "あまいかおりチョコケーキ": {"あまいミツ":9,"リラックスカカオ":8,"モーモーミルク":7},
-      "はなびらのまいチョコタルト": {"とくせんリンゴ":11,"リラックスカカオ":11},
-      "はりきりプロテインスムージー": {"ワカクサ大豆":15,"リラックスカカオ":8},
-      "おおきいマラサダ": {"ピュアなオイル":10,"モーモーミルク":7,"あまいミツ":6},
-      "マイペースやさいジュース": {"あんみんトマト":9,"とくせんリンゴ":7},
-      "かるわざソイケーキ": {"とくせんエッグ":8,"ワカクサ大豆":7},
-      "ひのこのジンジャーティー": {"あったかジンジャー":9,"とくせんリンゴ":7},
-      "じゅくせいスイートポテト": {"ほっこりポテト":9,"モーモーミルク":5},
-      "ねがいごとアップルパイ": {"とくせんリンゴ":12,"モーモーミルク":4},
-      "クラフトサイコソーダ": {"あまいミツ":9}
+    "Dessert": {
+      "\"Honey Gather\" Chocolate Waffles": {"Honey":38,"Pure Oil":28,"Greengrass Corn":28,"Soothing Cacao":21},
+      "\"Scary Face\" Pancakes": {"Honey":32,"Snoozy Tomato":29,"Fancy Egg":24,"Plump Pumpkin":18},
+      "Clodsire Éclair": {"Soothing Cacao":30,"Moomoo Milk":26,"Rousing Coffee":24,"Honey":22},
+      "\"Zing Zap\" Spiced Cola": {"Fancy Apple":35,"Large Leek":20,"Warming Ginger":20,"Rousing Coffee":12},
+      "\"Flower Gift\" Macarons": {"Fancy Egg":25,"Soothing Cacao":25,"Honey":17,"Moomoo Milk":10},
+      "\"Teatime\" Corn Scone": {"Fancy Apple":20,"Warming Ginger":20,"Greengrass Corn":18,"Moomoo Milk":9},
+      "\"Leaf Tornado\" Smoothie": {"Glossy Avocado":18,"Snoozy Tomato":16,"Moomoo Milk":14},
+      "Jigglypuff's Fruity Flan": {"Honey":20,"Fancy Egg":15,"Fancy Apple":10,"Moomoo Milk":10},
+      "\"Mold Breaker\" Corn Tiramisu": {"Rousing Coffee":14,"Greengrass Corn":14,"Moomoo Milk":12},
+      "\"Early Bird\" Coffee Jelly": {"Rousing Coffee":16,"Honey":12,"Moomoo Milk":14},
+      "\"Explosion\" Popcorn": {"Greengrass Corn":15,"Pure Oil":14,"Moomoo Milk":7},
+      "\"Huge Power\" Soy Donuts": {"Greengrass Soybeans":16,"Pure Oil":12,"Soothing Cacao":7},
+      "Neroli's Restorative Tea": {"Fancy Apple":15,"Warming Ginger":11,"Tasty Mushroom":9},
+      "\"Steadfast\" Ginger Cookies": {"Honey":14,"Warming Ginger":12,"Soothing Cacao":5,"Fancy Egg":4},
+      "\"Sweet Scent\" Chocolate Cake": {"Honey":9,"Soothing Cacao":8,"Moomoo Milk":7},
+      "\"Petal Dance\" Chocolate Tart": {"Fancy Apple":11,"Soothing Cacao":11},
+      "\"Hustle\" Protein Smoothie": {"Greengrass Soybeans":15,"Soothing Cacao":8},
+      "Big Malasada": {"Pure Oil":10,"Moomoo Milk":7,"Honey":6},
+      "\"Stalwart\" Vegetable Juice": {"Snoozy Tomato":9,"Fancy Apple":7},
+      "\"Cloud Nine\" Soy Cake": {"Fancy Egg":8,"Greengrass Soybeans":7},
+      "\"Ember\" Ginger Tea": {"Warming Ginger":9,"Fancy Apple":7},
+      "\"Fluffy\" Sweet Potatoes": {"Soft Potato":9,"Moomoo Milk":5},
+      "\"Lucky Chant\" Apple Pie": {"Fancy Apple":12,"Moomoo Milk":4},
+      "Craft Soda Pop": {"Honey":9},
+      "Fancy Apple Juice": {"Fancy Apple":8},
+      "Warm Moomoo Milk": {"Moomoo Milk":7},
+      "\"Lovely Kiss\" Smoothie": {"Fancy Apple":11,"Moomoo Milk":9,"Soothing Cacao":8,"Honey":7}
     }
   }
 };
 
-/* ===== 食材名正規化 ===== */
-const ING_NORM = {
-  "あまいみつ":"あまいミツ","あまいミツ":"あまいミツ",
-  "とくせんりんご":"とくせんリンゴ","とくせんリンゴ":"とくせんリンゴ",
-  "ふといながねぎ":"ふといナガネギ","ふといナガネギ":"ふといナガネギ",
-  "おいしいしっぽ":"おいしいしっぽ","おいしいシッポ":"おいしいしっぽ"
-};
-function normIng(n) { return ING_NORM[n] ?? n; }
+/* ===== Ingredient name normalization ===== */
+/* Kept as a function (rather than removed) so every call site below still
+   works unchanged. All names are now consistently in English, so this is a
+   straight pass-through; add entries here if any spelling variants turn up. */
+function normIng(n) { return n; }
 
-/* ===== 定数 ===== */
-const SUB_SKILLS  = ["その他","きのみの数S","おてスピM","おてスピS","おてぼ","食材確率M","食材確率S","スキル確率M","スキル確率S","最大所持数アップS","最大所持数アップM","最大所持数アップL"];
+/* ===== Ingredient display name ===== */
+/* pokemon_data.json now ships English ingredient names directly, so this is a
+   pass-through. Kept as a function so every call site below still works
+   unchanged, and so a display-only override can be added here later if needed. */
+function ingLabel(name) { return name; }
+
+/* ===== Constants ===== */
+const SUB_SKILLS  = ["Other","Berry Finding S","Helping Speed M","Helping Speed S","Helping Bonus","Ingredient Finder M","Ingredient Finder S","Skill Trigger M","Skill Trigger S","Inventory Up S","Inventory Up M","Inventory Up L"];
 const PATTERNS    = ["aaa","aab","aac","aba","abb","abc"];
-const NATURES_UP  = [["other","その他（補正なし）"],["speedUp","おてスピ↑"],["foodUp","食材確率↑"],["skillUp","スキル確率↑"]];
-const NATURES_DOWN= [["other","その他（補正なし）"],["speedDown","おてスピ↓"],["foodDown","食材確率↓"],["skillDown","スキル確率↓"]];
+const NATURES_UP  = [["other","Other (no bonus)"],["speedUp","Speed Up"],["foodUp","Ingredients Up"],["skillUp","Skill Up"]];
+const NATURES_DOWN= [["other","Other (no bonus)"],["speedDown","Speed Down"],["foodDown","Ingredients Down"],["skillDown","Skill Down"]];
 const SUB_IDS     = ["sub10","sub25","sub50","sub70","sub80"];
 const SUB_LABELS  = ["Lv10","Lv25","Lv50","Lv70","Lv80"];
 const SLOT_CONFIG = [
-  { key:"berry",  label:"きのみ",       emoji:"🍒", cls:"berry",  category:"きのみ" },
-  { key:"ing",    label:"食材",         emoji:"🍳", cls:"ing",    category:"食材"   },
-  { key:"skill",  label:"スキル",       emoji:"⚡", cls:"skill",  category:"スキル" }
+  { key:"berry",  label:"Berry",      emoji:"🍒", cls:"berry",  category:"Berry"      },
+  { key:"ing",    label:"Ingredient", emoji:"🍳", cls:"ing",    category:"Ingredient" },
+  { key:"skill",  label:"Skill",      emoji:"⚡", cls:"skill",  category:"Skill"      }
 ];
 
 const WEEK_SECONDS   = 7 * 86400;
 const LEVEL_TIME_COEF= 0.002;
 const BASE_DIVISOR   = 2.222;
 
-/* ===== 状態 ===== */
+/* ===== State ===== */
 let pokemonDB  = [];
 let recipeRows = [];
 let uid = 0;
 
-// 編成カウント
+// Composition count
 const comp = { berry:0, ing:0, skill:0 };
 
-// いいキャンプチケット
+// Good Camp Ticket
 let campTicket = false;
-let sleepTap = true; // デフォルトON（毎分タップ＝あふれなし）
+let sleepTap = true; // default ON (tap every minute = no overflow)
 
 function toggleCamp() {
   campTicket = !campTicket;
@@ -672,29 +678,29 @@ function toggleSleepTap() {
   wrap.classList.toggle("on", sleepTap);
 }
 
-// 登録済みポケモンスロット: [{slotType, slotLabel, prefix}]
+// Registered Pokémon slots: [{slotType, slotLabel, prefix}]
 let pokemonSlots = [];
 
-/* ===== DB読み込み ===== */
+/* ===== Load DB ===== */
 const POKEMON_JSON_URL = "https://simulator.tofumentalpapa.com/pokemon_data.json";
 
 async function loadDB() {
   try {
     pokemonDB = await (await fetch(POKEMON_JSON_URL)).json();
-    // maxInventoryが含まれているか確認
+    // Check whether maxInventory is included
     const hasMaxInv = pokemonDB.length > 0 && pokemonDB[0].maxInventory !== undefined;
     if (!hasMaxInv) {
-      console.warn("⚠️ pokemon_data.jsonにmaxInventoryが含まれていません。GitHubに最新のpokemon_data.jsonをアップロードしてください。");
+      console.warn("⚠️ pokemon_data.json does not include maxInventory. Please upload the latest pokemon_data.json to GitHub.");
     }
   }
-  catch(e) { console.warn("pokemon_data.json読み込みエラー:", e); pokemonDB = []; }
+  catch(e) { console.warn("Error loading pokemon_data.json:", e); pokemonDB = []; }
   initEvents();
 }
 
 function initEvents() {
   document.getElementById("btnToStep1").addEventListener("click", () => {
     const saved = savePokemonSettings();
-    // 食材ポケモンの登録体数を保持（編成変更で増減する可能性があるため）
+    // Keep the registered count of ingredient Pokémon (it may change when composition changes)
     const savedIngCount = saved.filter(s => s.slotType === "ing").length;
     buildPokemonSlots(savedIngCount);
     restorePokemonSettings(saved);
@@ -716,11 +722,11 @@ function initEvents() {
   document.getElementById("btnAddRecipe").addEventListener("click", addRecipeRow);
   document.getElementById("btnAddStock").addEventListener("click", addStockRow);
 
-  // 初期料理行
+  // Initial recipe row
   addRecipeRow();
 }
 
-/* ===== ステップ切替 ===== */
+/* ===== Step switching ===== */
 function goStep(n) {
   ["step0","step1","step2","step3"].forEach((id,i) => {
     document.getElementById(id).classList.toggle("pks-hidden", i !== n);
@@ -732,9 +738,9 @@ function goStep(n) {
   if (n === 3) calculate();
 }
 
-/* ===== 編成カウンター ===== */
+/* ===== Composition counter ===== */
 function changeComp(key, delta) {
-  // 浮動小数点誤差を避けるため×10して整数計算
+  // Multiply by 10 to avoid floating point errors, compute as integers
   const cur10  = Math.round(comp[key] * 10);
   const delta10 = Math.round(delta * 10);
   const next10 = cur10 + delta10;
@@ -753,21 +759,21 @@ function updateCompUI() {
   SLOT_CONFIG.forEach(s => {
     const el = document.getElementById(`compVal_${s.key}`);
     if (el) {
-      // 0.5刻みで整数なら整数表示、小数なら小数表示
+      // Show as an integer if it's a whole number, otherwise show one decimal
       const v = comp[s.key];
       el.textContent = (v % 1 === 0) ? v.toFixed(0) : v.toFixed(1);
     }
   });
   const totalEl = document.getElementById("compTotal");
   const totalDisp = (total % 1 === 0) ? total.toFixed(0) : total.toFixed(1);
-  totalEl.textContent = `合計 ${totalDisp} / 5 体`;
+  totalEl.textContent = `Total ${totalDisp} / 5`;
   const total10 = Math.round(total * 10);
   totalEl.className = "pks-comp-total " + (total10 === 50 ? "ok" : "ng");
   document.getElementById("btnToStep1").disabled = (total10 !== 50);
 }
 
-/* ===== ポケモンスロット生成 ===== */
-let ingPanel = null; // 食材パネルへの参照
+/* ===== Generate Pokémon slots ===== */
+let ingPanel = null; // reference to the ingredient panel
 
 function buildPokemonSlots(ingInitCount) {
   pokemonSlots = [];
@@ -783,14 +789,14 @@ function buildPokemonSlots(ingInitCount) {
     panel.className = "pks-panel";
 
     if (cfg.key === "ing" || cfg.key === "selIng") {
-      // 食材/食材セレクトパネル：追加ボタンあり
+      // Ingredient / Ingredient-select panel: has an add button
       if (cfg.key === "ing") ingPanel = panel;
-      const panelId = "ingPanelInner"; // 食材・食材セレクト共通パネル
+      const panelId = "ingPanelInner"; // shared panel for ingredient / ingredient-select
       const titleBar = document.createElement("div");
       titleBar.style.cssText = "display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;";
-      const addBtns = `<button class="pks-btn-add" style="width:auto;margin:0;padding:6px 14px;font-size:12px;" onclick="addIngPokemonCard(null,'${cfg.key}')">＋ 追加</button>`;
+      const addBtns = `<button class="pks-btn-add" style="width:auto;margin:0;padding:6px 14px;font-size:12px;" onclick="addIngPokemonCard(null,'${cfg.key}')">＋ Add</button>`;
       titleBar.innerHTML = `
-        <span class="pks-panel-title" style="margin-bottom:0" id="${cfg.key}PanelTitle">${cfg.emoji} ${cfg.label}ポケモン（枠${count}）</span>
+        <span class="pks-panel-title" style="margin-bottom:0" id="${cfg.key}PanelTitle">${cfg.emoji} ${cfg.label} Pokémon (Slots: ${count})</span>
         ${addBtns}
       `;
       panel.appendChild(titleBar);
@@ -803,21 +809,21 @@ function buildPokemonSlots(ingInitCount) {
         addIngPokemonCard(panel, cfg.key);
       }
     } else {
-      // 固定枠（きのみ・スキル・ヒーラー）
-      const slotCount = comp[cfg.key]; // 例: 1.5
-      const fullCount = Math.floor(slotCount); // 整数部: 1
-      const halfSlot  = Math.round((slotCount - fullCount) * 10) / 10; // 小数部: 0.5
+      // Fixed slots (Berry / Skill / Healer)
+      const slotCount = comp[cfg.key]; // e.g. 1.5
+      const fullCount = Math.floor(slotCount); // integer part: 1
+      const halfSlot  = Math.round((slotCount - fullCount) * 10) / 10; // decimal part: 0.5
       const totalCards = fullCount + (halfSlot > 0 ? 1 : 0);
-      const halfLabel  = halfSlot > 0 ? `（うち1体は${halfSlot}枠稼働）` : "";
-      panel.innerHTML = `<div class="pks-panel-title">${cfg.emoji} ${cfg.label}ポケモン（${slotCount}枠${halfLabel}）</div>`;
+      const halfLabel  = halfSlot > 0 ? ` (one Pokémon active at ${halfSlot} slot)` : "";
+      panel.innerHTML = `<div class="pks-panel-title">${cfg.emoji} ${cfg.label} Pokémon (${slotCount} slots${halfLabel})</div>`;
       for (let i = 0; i < totalCards; i++) {
         const id = uid++;
         const prefix = `slot_${id}`;
-        // 小数枠の最後の1体は稼働スケール=halfSlot
+        // The last Pokémon in a fractional slot uses scale = halfSlot
         const scale = (halfSlot > 0 && i === totalCards - 1) ? halfSlot : 1.0;
         pokemonSlots.push({ slotType: cfg.key, prefix, cls: cfg.cls, scale });
 
-        const halfNote = scale < 1 ? ` <span style="font-size:10px;color:var(--pks-text-dim);">(${scale*100}%稼働)</span>` : "";
+        const halfNote = scale < 1 ? ` <span style="font-size:10px;color:var(--pks-text-dim);">(${scale*100}% active)</span>` : "";
         const card = document.createElement("div");
         card.className = "pks-pokemon-card";
         card.innerHTML = `
@@ -854,7 +860,7 @@ function addIngPokemonCard(panel, slotKey) {
   card.innerHTML = `
     <div class="pks-card-header">
       <span class="pks-card-label ${clsName}" id="ingCardLabel_${id}">${cfg.emoji} ${cfg.label} ${num}</span>
-      <button class="pks-remove-btn" onclick="removeIngPokemonCard(${id},'${key}')">削除</button>
+      <button class="pks-remove-btn" onclick="removeIngPokemonCard(${id},'${key}')">Delete</button>
     </div>
     ${pokemonFormHTML(prefix, cfg.category)}
   `;
@@ -890,15 +896,15 @@ function updateIngPanelTitle() {
   const ingCount = pokemonSlots.filter(s => s.slotType === "ing").length;
   const selIngCount = pokemonSlots.filter(s => s.slotType === "selIng").length;
   const el = document.getElementById("ingPanelTitle");
-  if (el) el.textContent = `🍳 食材ポケモン（枠${comp.ing}・食材${ingCount}体・セレクト${selIngCount}体）`;
+  if (el) el.textContent = `🍳 Ingredient Pokémon (Slots: ${comp.ing} · Ingredient: ${ingCount} · Select: ${selIngCount})`;
 }
 
-/* ===== ポケモンフォームHTML ===== */
+/* ===== Pokémon form HTML ===== */
 function optsPokemon(category) {
-  if (!pokemonDB.length) return `<option value="">（データなし）</option>`;
+  if (!pokemonDB.length) return `<option value="">(no data)</option>`;
   let filtered;
   if (category === "selIng") {
-    // 食材セレクト枠: skillIngredientsを持つポケモンのみ
+    // Ingredient-select slot: only Pokémon with skillIngredients
     filtered = pokemonDB.filter(p => p.skillIngredients && p.skillIngredients.length > 0);
   } else if (category) {
     filtered = pokemonDB.filter(p => p.category === category);
@@ -924,35 +930,35 @@ function optsPattern() {
 function pokemonFormHTML(pre, category) {
   return `
     <div class="field">
-      <label>ポケモン</label>
+      <label>Pokémon</label>
       <div class="pks-sw"><select id="${pre}_p">${optsPokemon(category)}</select></div>
     </div>
     <div class="pks-row2">
       <div class="field">
-        <label>レベル</label>
+        <label>Level</label>
         <input type="number" id="${pre}_lv" min="1" max="60" value="50">
       </div>
       <div class="field">
-        <label>食材配列</label>
+        <label>Ingredient Layout</label>
         <div class="pks-sw"><select id="${pre}_pat">${optsPattern()}</select></div>
       </div>
     </div>
     <button class="pks-accordion-btn" type="button" onclick="toggleAccordion('${pre}_detail')">
-      <span>性格・サブスキルを設定</span><span id="${pre}_detail_arrow">▼</span>
+      <span>Set Nature & Sub-skills</span><span id="${pre}_detail_arrow">▼</span>
     </button>
     <div class="pks-accordion-body" id="${pre}_detail">
       <div class="pks-row2">
         <div class="field">
-          <label>性格↑</label>
+          <label>Nature ↑</label>
           <div class="pks-sw"><select id="${pre}_nu">${optsNature(NATURES_UP)}</select></div>
         </div>
         <div class="field">
-          <label>性格↓</label>
+          <label>Nature ↓</label>
           <div class="pks-sw"><select id="${pre}_nd">${optsNature(NATURES_DOWN)}</select></div>
         </div>
       </div>
       <div class="field">
-        <label>サブスキル（${SUB_LABELS.join(" / ")}）</label>
+        <label>Sub-skills (${SUB_LABELS.join(" / ")})</label>
         <div class="pks-subs">
           ${SUB_IDS.map(sid => `<div class="pks-sw"><select id="${pre}_${sid}">${optsSub()}</select></div>`).join("")}
         </div>
@@ -969,10 +975,10 @@ function toggleAccordion(id) {
   if (arrow) arrow.textContent = isOpen ? '▲' : '▼';
 }
 
-/* ===== 在庫行 ===== */
+/* ===== Stock rows ===== */
 let stockRows = [];
 
-// 全食材名リスト（レシピから自動収集）
+// List of all ingredient names (collected automatically from recipes)
 function getAllIngredientNames() {
   const names = new Set();
   for (const genre of Object.values(RECIPE_DATA.recipes)) {
@@ -985,7 +991,7 @@ function getAllIngredientNames() {
 
 function buildIngOpts(sel) {
   return getAllIngredientNames()
-    .map(n => `<option value="${n}"${n===sel?" selected":""}>${n}</option>`)
+    .map(n => `<option value="${n}"${n===sel?" selected":""}>${ingLabel(n)}</option>`)
     .join("");
 }
 
@@ -997,13 +1003,13 @@ function addStockRow() {
   row.id = `sr_${id}`;
   row.innerHTML = `
     <div class="field" style="margin:0;grid-column:span 2">
-      <label style="font-size:10px">食材名</label>
+      <label style="font-size:10px">Ingredient</label>
       <div class="pks-sw">
         <select id="si_${id}">${buildIngOpts("")}</select>
       </div>
     </div>
     <div class="field" style="margin:0">
-      <label style="font-size:10px">個数</label>
+      <label style="font-size:10px">Quantity</label>
       <input type="number" id="sq_${id}" min="0" value="0" style="padding:8px 8px">
     </div>
     <button class="pks-recipe-remove" onclick="removeStockRow(${id})">✕</button>
@@ -1029,7 +1035,7 @@ function getStockMap() {
   return stock;
 }
 
-/* ===== 料理行 ===== */
+/* ===== Recipe rows ===== */
 function buildGenreOpts(sel) {
   return RECIPE_DATA.genres.map(g => `<option value="${g}"${g===sel?" selected":""}>${g}</option>`).join("");
 }
@@ -1046,19 +1052,19 @@ function addRecipeRow() {
   row.id = `rr_${id}`;
   row.innerHTML = `
     <div class="field" style="margin:0">
-      <label style="font-size:10px">ジャンル</label>
+      <label style="font-size:10px">Category</label>
       <div class="pks-sw">
         <select id="rg_${id}" onchange="onGenreChange(${id})">${buildGenreOpts(g0)}</select>
       </div>
     </div>
     <div class="field" style="margin:0">
-      <label style="font-size:10px">料理名</label>
+      <label style="font-size:10px">Dish</label>
       <div class="pks-sw">
         <select id="rn_${id}" onchange="updateRecipeTotal()">${buildRecipeOpts(g0)}</select>
       </div>
     </div>
     <div class="field" style="margin:0">
-      <label style="font-size:10px">食数</label>
+      <label style="font-size:10px">Servings</label>
       <input type="number" id="rc_${id}" min="1" max="21" value="1" onchange="updateRecipeTotal()">
     </div>
     <button class="pks-recipe-remove" onclick="removeRecipeRow(${id})">✕</button>
@@ -1083,11 +1089,11 @@ function removeRecipeRow(id) {
 function updateRecipeTotal() {
   const total = recipeRows.reduce((s,id) => s+(Number(document.getElementById(`rc_${id}`)?.value)||0), 0);
   const el = document.getElementById("recipeTotal");
-  el.textContent = `合計：${total} 食`;
+  el.textContent = `Total: ${total} meals`;
   el.className = "pks-total-line " + (total===21?"ok":"ng");
 }
 
-/* ===== 計算 ===== */
+/* ===== Calculation ===== */
 function getEntry(pre) {
   const name = document.getElementById(`${pre}_p`)?.value;
   if (!name) return null;
@@ -1099,69 +1105,69 @@ function getEntry(pre) {
     pattern:   document.getElementById(`${pre}_pat`)?.value||"aab",
     natureUp:  document.getElementById(`${pre}_nu`)?.value||"other",
     natureDown:document.getElementById(`${pre}_nd`)?.value||"other",
-    subs: SUB_IDS.map(sid => document.getElementById(`${pre}_${sid}`)?.value||"その他")
+    subs: SUB_IDS.map(sid => document.getElementById(`${pre}_${sid}`)?.value||"Other")
   };
 }
 
 function calcWeekly(entry, teamOtebonus = 0) {
-  // teamOtebonus: チームに編成中のおてぼ持ちポケモン数×5%の合計
+  // teamOtebonus: sum of (Helping Bonus Pokémon on the team) × 5%
   if (!entry) return {};
   const {pokemon, level, pattern, natureUp, natureDown, subs} = entry;
 
-  // ── サブスキル解放レベルでフィルタリング ──
-  // Lv10:1枠目, Lv25:2枠目, Lv50:3枠目, Lv70:4枠目, Lv80:5枠目
+  // ── Filter by sub-skill unlock level ──
+  // Lv10: slot 1, Lv25: slot 2, Lv50: slot 3, Lv70: slot 4, Lv80: slot 5
   const SUB_UNLOCK = [10, 25, 50, 70, 80];
   const activeSubs = subs.filter((_, i) => level >= SUB_UNLOCK[i]);
 
-  // ── おてつだい時間補正 ──
-  const speedM = activeSubs.filter(s => s === "おてスピM").length;
-  const speedS = activeSubs.filter(s => s === "おてスピS").length;
+  // ── Helping time adjustment ──
+  const speedM = activeSubs.filter(s => s === "Helping Speed M").length;
+  const speedS = activeSubs.filter(s => s === "Helping Speed S").length;
 
   let tf = 1.0;
   if (natureUp   === "speedUp")   tf *= 0.9;
   if (natureDown === "speedDown") tf *= 1.075;
 
-  // お手伝いスピードボーナス:
-  // 自分のおてスピM×14% + おてスピS×7% + チームおてぼ合計
-  // を合算して上限35%、interval短縮に適用
+  // Helping Speed bonus:
+  // own Helping Speed M×14% + Helping Speed S×7% + team's total Helping Bonus
+  // summed together, capped at 35%, applied to shorten the interval
   const personalBonus = speedM * 0.14 + speedS * 0.07;
   const totalBonus = Math.min(personalBonus + teamOtebonus, 0.35);
   tf *= (1 - totalBonus);
 
-  // 実効おてつだい時間
+  // Effective helping time
   const levelCoef = 1 - (level - 1) * LEVEL_TIME_COEF;
-  // いいキャンプチケット: スピード×1.2 = interval÷1.2
+  // Good Camp Ticket: speed ×1.2 = interval ÷1.2
   const campCoef = campTicket ? (1 / 1.2) : 1.0;
   const interval  = (pokemon.helpTime * levelCoef * tf * campCoef) / BASE_DIVISOR;
-  const hpw       = WEEK_SECONDS / interval; // 週間行動回数
+  const hpw       = WEEK_SECONDS / interval; // Helps per week
 
-  // ── 食材発見率 ──
-  // 正しい計算式: 基礎fr × (1 + 0.36×M + 0.18×S) × 性格補正
-  // ※サブスキル同士は加算、基礎frとは乗算（Wiki検証済み）
-  const foodM = activeSubs.filter(s => s === "食材確率M").length;
-  const foodS = activeSubs.filter(s => s === "食材確率S").length;
+  // ── Ingredient find rate ──
+  // Correct formula: base fr × (1 + 0.36×M + 0.18×S) × nature modifier
+  // Note: sub-skills add together, then multiply with the base fr (verified against the wiki)
+  const foodM = activeSubs.filter(s => s === "Ingredient Finder M").length;
+  const foodS = activeSubs.filter(s => s === "Ingredient Finder S").length;
   let fr = (pokemon.ingredientFindRate ?? 0) / 100;
   fr *= (1 + 0.36 * foodM + 0.18 * foodS);
-  // 性格補正（乗算）
+  // Nature modifier (multiplicative)
   if (natureUp   === "foodUp")   fr *= 1.2;
   if (natureDown === "foodDown") fr *= 0.8;
   fr = Math.max(0, Math.min(1, fr));
 
-  // ── スキル確率 ──
-  // 基礎skillRate × (1 + 0.36×スキル確率M + 0.18×スキル確率S) × 性格補正
-  const skillM = activeSubs.filter(s => s === "スキル確率M").length;
-  const skillS = activeSubs.filter(s => s === "スキル確率S").length;
+  // ── Skill trigger rate ──
+  // base skillRate × (1 + 0.36×Skill Trigger M + 0.18×Skill Trigger S) × nature modifier
+  const skillM = activeSubs.filter(s => s === "Skill Trigger M").length;
+  const skillS = activeSubs.filter(s => s === "Skill Trigger S").length;
   let skillRate = (pokemon.skillRate ?? 0) / 100;
   skillRate *= (1 + 0.36 * skillM + 0.18 * skillS);
   if (natureUp   === "skillUp")   skillRate *= 1.1;
   if (natureDown === "skillDown") skillRate *= 0.9;
   skillRate = Math.max(0, skillRate);
 
-  // ── 食材スロット ──
+  // ── Ingredient slots ──
   const slots = level < 30 ? [1] : level < 60 ? [1, 2] : [1, 2, 3];
-  const sp = 1 / slots.length; // スロット配分係数
+  const sp = 1 / slots.length; // slot distribution coefficient
 
-  // 1回のお手伝いあたりの平均食材個数（全スロット合計）
+  // Average ingredient count per Help (summed across all slots)
   let avgIngPerHelp = 0;
   const slotIngMap = {}; // slot -> {ing, cnt}
   for (const slot of slots) {
@@ -1183,75 +1189,75 @@ function calcWeekly(entry, teamOtebonus = 0) {
     if (ing && cnt > 0) avgIngPerHelp += cnt * sp;
   }
 
-  // ── 最大所持数（基礎値 + サブスキル加算） ──
-  const invS = activeSubs.filter(s => s === "最大所持数アップS").length;
-  const invM = activeSubs.filter(s => s === "最大所持数アップM").length;
-  const invL = activeSubs.filter(s => s === "最大所持数アップL").length;
+  // ── Max inventory (base value + sub-skill bonus) ──
+  const invS = activeSubs.filter(s => s === "Inventory Up S").length;
+  const invM = activeSubs.filter(s => s === "Inventory Up M").length;
+  const invL = activeSubs.filter(s => s === "Inventory Up L").length;
   const invBonus = invS * 6 + invM * 12 + invL * 18;
   const maxInventory = (pokemon.maxInventory != null)
     ? pokemon.maxInventory + invBonus
     : null;
 
-  // きのみ1回あたりの個数
-  // きのみタイプ=2個/回、食材・スキルタイプ=1個/回、きのみの数Sで+1
-  const berryNumS = activeSubs.filter(s => s === "きのみの数S").length;
-  const berryPerHelp = (pokemon.category === "きのみ" ? 2 : 1) + berryNumS;
+  // Amount of berries per Help
+  // Berry type = 2/Help, Ingredient/Skill type = 1/Help, +1 with Berry Finding S
+  const berryNumS = activeSubs.filter(s => s === "Berry Finding S").length;
+  const berryPerHelp = (pokemon.category === "Berry" ? 2 : 1) + berryNumS;
 
-  // ── 所持数あふれ計算 ──
-  // 【正しい計算式（ユキさん方式）】
-  // avgPerHelp = きのみ個数×(1-fr) + 食材平均個数×fr
-  // helpsUntilFull = maxInventory ÷ avgPerHelp  → 満タンまでのお手伝い回数
+  // ── Inventory overflow calculation ──
+  // [Correct formula (Yuki's method)]
+  // avgPerHelp = berries×(1-fr) + average ingredient count×fr
+  // helpsUntilFull = maxInventory ÷ avgPerHelp  → Helps until inventory is full
   //
-  // 起床中（15.5h）：毎分タップ前提 → 常にあふれなし
-  //   食材獲得 = awakeHelps × fr × 食材個数/回
+  // Awake (15.5h): tap every minute is assumed → never overflows
+  //   ingredient gain = awakeHelps × fr × ingredients/Help
   //
-  // 睡眠中（8.5h）：
-  //   sleepTap=ON  → あふれなし（通常計算）
-  //   sleepTap=OFF → helpsUntilFull回まで食材獲得、それ以降はきのみのみ
-  //   睡眠中食材獲得 = min(sleepHelps, helpsUntilFull) × fr × 食材個数/回
+  // Asleep (8.5h):
+  //   sleepTap=ON  → no overflow (normal calculation)
+  //   sleepTap=OFF → gathers ingredients up to helpsUntilFull, berries only after that
+  //   sleep ingredient gain = min(sleepHelps, helpsUntilFull) × fr × ingredients/Help
 
   const AWAKE_SECONDS = 15.5 * 3600;
   const SLEEP_SECONDS = 8.5 * 3600;
 
-  // 1回あたりの平均蓄積個数（きのみ+食材合算）
+  // Average accumulated amount per Help (berries + ingredients combined)
   const avgPerHelp = (1 - fr) * berryPerHelp + fr * avgIngPerHelp;
 
-  // ── 食材セレクトスキル計算 ──
-  // スキル発動回数 = hpw × skillRate% / 100
-  // 睡眠中タップなしの場合:
-  //   きのみ・食材タイプ = 1日最大1回（7日で最大7回）
-  //   スキルタイプ      = 1日最大2回（7日で最大14回）
+  // ── Ingredient Select skill calculation ──
+  // Skill trigger count = hpw × skillRate% / 100
+  // If no tapping during sleep:
+  //   Berry/Ingredient types = capped at 1/day (up to 7/week)
+  //   Skill types           = capped at 2/day (up to 14/week)
   const skillIngResult = {};
   if (pokemon.skillIngredients && pokemon.skillIngredients.length > 0
       && pokemon.skillIngCount > 0 && pokemon.skillRate > 0) {
 
-    // ── スキル発動回数計算 ──
+    // ── Skill trigger count calculation ──
     const AWAKE_SECS = 15.5 * 3600;
     const SLEEP_SECS = 8.5 * 3600;
     let skillTriggers;
-    let skillTriggersAwake7 = 0;  // 起床中週間発動回数（表示用）
-    let skillTriggersSleep7 = 0;  // 睡眠中週間発動回数（表示用）
+    let skillTriggersAwake7 = 0;  // weekly triggers while awake (for display)
+    let skillTriggersSleep7 = 0;  // weekly triggers while asleep (for display)
 
     if (sleepTap) {
-      // 毎分タップあり: 24時間上限なし
+      // Tapping every minute: no 24h cap
       skillTriggers = hpw * skillRate;
       skillTriggersAwake7 = skillTriggers;
     } else {
-      // 起床中（15.5h）: 上限なし
+      // Awake (15.5h): no cap
       const awakeHelpsPerWeek = AWAKE_SECS / interval * 7;
       skillTriggersAwake7 = awakeHelpsPerWeek * skillRate;
 
-      // 睡眠中（8.5h）: 所持数があふれるまでのお手伝い回数 × skillRate
-      // → 上限（スキルタイプ2回/日、きのみ・食材1回/日）と比較して小さい方を使用
+      // Asleep (8.5h): Helps until inventory overflows × skillRate
+      // → use the smaller of this or the cap (2/day for Skill type, 1/day for Berry/Ingredient)
       const sleepHelpsPerNight = SLEEP_SECS / interval;
       let sleepHelpsEffective = sleepHelpsPerNight;
       if (maxInventory != null && maxInventory > 0 && avgPerHelp > 0) {
         const helpsUntilFull = maxInventory / avgPerHelp;
         sleepHelpsEffective = Math.min(sleepHelpsPerNight, helpsUntilFull);
       }
-      const sleepMaxPerNight = (pokemon.category === "スキル") ? 2 : 1;
-      const sleepTriggersCalc = sleepHelpsEffective * skillRate; // 期待値
-      const sleepTriggersCapped = Math.min(sleepTriggersCalc, sleepMaxPerNight); // 上限適用
+      const sleepMaxPerNight = (pokemon.category === "Skill") ? 2 : 1;
+      const sleepTriggersCalc = sleepHelpsEffective * skillRate; // expected value
+      const sleepTriggersCapped = Math.min(sleepTriggersCalc, sleepMaxPerNight); // apply cap
       skillTriggersSleep7 = sleepTriggersCapped * 7;
 
       skillTriggers = skillTriggersAwake7 + skillTriggersSleep7;
@@ -1271,32 +1277,32 @@ function calcWeekly(entry, teamOtebonus = 0) {
     const k = normIng(ing);
 
     if (!sleepTap && maxInventory != null && maxInventory > 0 && avgPerHelp > 0) {
-      // あふれ考慮モード
-      const awakeHelps     = AWAKE_SECONDS / interval;  // 起床中お手伝い回数/日
-      const sleepHelps     = SLEEP_SECONDS / interval;  // 睡眠中お手伝い回数/日
-      const helpsUntilFull = maxInventory / avgPerHelp; // 満タンまでの回数
+      // Overflow-aware mode
+      const awakeHelps     = AWAKE_SECONDS / interval;  // Helps while awake / day
+      const sleepHelps     = SLEEP_SECONDS / interval;  // Helps while asleep / day
+      const helpsUntilFull = maxInventory / avgPerHelp; // Helps until full
 
-      // 睡眠中に有効なお手伝い回数（満タンになったら以降は食材取れない）
+      // Effective sleep Helps (no more ingredients once full)
       const effectiveSleepHelps = Math.min(sleepHelps, helpsUntilFull);
 
-      // 1日の食材獲得量
+      // Daily ingredient gain
       const dailyIng = (awakeHelps + effectiveSleepHelps) * fr * cnt * sp;
 
-      // 週間獲得量
+      // Weekly gain
       result[k] = (result[k] ?? 0) + dailyIng * 7;
     } else {
-      // あふれなしモード（通常計算）
+      // No-overflow mode (normal calculation)
       result[k] = (result[k] ?? 0) + hpw * fr * cnt * sp;
     }
   }
-  // スキル食材をresultにマージ
+  // Merge skill ingredients into result
   for (const [k, v] of Object.entries(skillIngResult)) {
     result[k] = (result[k] ?? 0) + v;
   }
   return result;
 }
 
-/* ===== ポケモン設定 保存・復元 ===== */
+/* ===== Save/restore Pokémon settings ===== */
 function savePokemonSettings() {
   const saved = [];
   for (const slot of pokemonSlots) {
@@ -1309,7 +1315,7 @@ function savePokemonSettings() {
       pat:  document.getElementById(`${pre}_pat`)?.value  ?? "aab",
       nu:   document.getElementById(`${pre}_nu`)?.value   ?? "other",
       nd:   document.getElementById(`${pre}_nd`)?.value   ?? "other",
-      subs: SUB_IDS.map(sid => document.getElementById(`${pre}_${sid}`)?.value ?? "その他")
+      subs: SUB_IDS.map(sid => document.getElementById(`${pre}_${sid}`)?.value ?? "Other")
     };
     saved.push(entry);
   }
@@ -1318,7 +1324,7 @@ function savePokemonSettings() {
 
 function restorePokemonSettings(saved) {
   if (!saved || saved.length === 0) return;
-  // slotTypeが一致するスロットに順番に復元
+  // Restore in order to slots with matching slotType
   const byType = {};
   for (const s of saved) {
     if (!byType[s.slotType]) byType[s.slotType] = [];
@@ -1346,8 +1352,8 @@ function restorePokemonSettings(saved) {
       const el = document.getElementById(`${pre}_${sid}`);
       if (el && data.subs[i]) el.value = data.subs[i];
     });
-    // アコーディオンを開く（設定があれば）
-    const hasDetail = data.nu !== "other" || data.nd !== "other" || data.subs.some(s => s !== "その他");
+    // Open the accordion if there are settings
+    const hasDetail = data.nu !== "other" || data.nd !== "other" || data.subs.some(s => s !== "Other");
     if (hasDetail) {
       const body = document.getElementById(`${pre}_detail`);
       const arrow = document.getElementById(`${pre}_detail_arrow`);
@@ -1357,7 +1363,7 @@ function restorePokemonSettings(saved) {
   }
 }
 
-// スキル発動回数情報を計算（表示用）
+// Calculate skill trigger count info (for display)
 function calcSkillTriggersInfo(entry, teamOtebonus) {
   if (!entry) return null;
   const {pokemon, level, subs, natureUp, natureDown} = entry;
@@ -1365,8 +1371,8 @@ function calcSkillTriggersInfo(entry, teamOtebonus) {
 
   const SUB_UNLOCK = [10, 25, 50, 70, 80];
   const activeSubs = subs.filter((_, i) => level >= SUB_UNLOCK[i]);
-  const skillM = activeSubs.filter(s => s === "スキル確率M").length;
-  const skillS = activeSubs.filter(s => s === "スキル確率S").length;
+  const skillM = activeSubs.filter(s => s === "Skill Trigger M").length;
+  const skillS = activeSubs.filter(s => s === "Skill Trigger S").length;
   let skillRate = (pokemon.skillRate ?? 0) / 100;
   skillRate *= (1 + 0.36 * skillM + 0.18 * skillS);
   if (natureUp === "skillUp")   skillRate *= 1.1;
@@ -1378,10 +1384,10 @@ function calcSkillTriggersInfo(entry, teamOtebonus) {
   const WEEK_SECONDS = 7 * 86400;
   const levelCoef = 1 - (level - 1) * LEVEL_TIME_COEF;
 
-  // おてスピ補正
-  const speedM = activeSubs.filter(s => s === "おてスピM").length;
-  const speedS = activeSubs.filter(s => s === "おてスピS").length;
-  const oteBonus = activeSubs.filter(s => s === "おてぼ").length;
+  // Helping Speed modifier
+  const speedM = activeSubs.filter(s => s === "Helping Speed M").length;
+  const speedS = activeSubs.filter(s => s === "Helping Speed S").length;
+  const oteBonus = activeSubs.filter(s => s === "Helping Bonus").length;
   let tf = 1.0;
   if (natureUp === "speedUp") tf *= 0.9;
   if (natureDown === "speedDown") tf *= 1.075;
@@ -1402,9 +1408,9 @@ function calcSkillTriggersInfo(entry, teamOtebonus) {
     const awakeHelpsPerWeek = AWAKE_SECS / interval * 7;
     const awake = awakeHelpsPerWeek * skillRate;
 
-    // 所持数あふれ考慮
+    // Account for inventory overflow
     const fr = (pokemon.ingredientFindRate ?? 0) / 100;
-    const berryPerHelp = (pokemon.category === "きのみ" ? 2 : 1);
+    const berryPerHelp = (pokemon.category === "Berry" ? 2 : 1);
     const slots = level < 30 ? [1] : level < 60 ? [1,2] : [1,2,3];
     let avgIng = 0;
     for (const slot of slots) {
@@ -1422,7 +1428,7 @@ function calcSkillTriggersInfo(entry, teamOtebonus) {
     if (maxInv && avgPerHelp > 0) {
       sleepHelpsEff = Math.min(sleepHelpsPerNight, maxInv / avgPerHelp);
     }
-    const sleepMax = (pokemon.category === "スキル") ? 2 : 1;
+    const sleepMax = (pokemon.category === "Skill") ? 2 : 1;
     const sleepCalc = sleepHelpsEff * skillRate;
     const sleepCapped = Math.min(sleepCalc, sleepMax);
     const sleep = sleepCapped * 7;
@@ -1436,7 +1442,7 @@ function mergeIng(a,b) {
   return r;
 }
 
-// 1日フル稼働・げんき常時MAX前提の純粋な食材獲得量
+// Pure ingredient gain assuming full-day activity and always-max energy
 function calcDaily(entry, teamOtebonus = 0) {
   if (!entry) return {};
   const result = calcWeekly(entry, teamOtebonus);
@@ -1446,11 +1452,11 @@ function calcDaily(entry, teamOtebonus = 0) {
 }
 
 function calcIngPokemonSchedule(ingEntries, ingSlotCount, dailyNeed) {
-  // 【アルゴリズム】
-  // 1. 食材ごとに「最も効率よく集められるポケモン」を担当者に割り当て
-  // 2. 担当食材の必要量を満たすのに必要な稼働日数を計算
-  // 3. 必要日数分だけ稼働させる（合計稼働 ≤ 枠数×7日 の範囲内）
-  // これにより余剰を出さず全食材をバランスよく集められる
+  // [Algorithm]
+  // 1. Assign the most efficient Pokémon as the "owner" for each ingredient
+  // 2. Calculate how many days of activity are needed to meet that ingredient's requirement
+  // 3. Only activate for the number of days needed (within total activity ≤ slots × 7 days)
+  // This gathers every ingredient in a balanced way without producing surplus
 
   const totalDays = 7;
   const n = ingEntries.length;
@@ -1463,47 +1469,47 @@ function calcIngPokemonSchedule(ingEntries, ingSlotCount, dailyNeed) {
     return workDays.map(() => totalDays * scale);
   }
 
-  // 各ポケモンの1日あたり食材獲得量
+  // Each Pokémon's daily ingredient gain
   const dailyRates = ingEntries.map(({weekly}) => {
     const d = {};
     for (const [k,v] of Object.entries(weekly)) d[k] = v / 7;
     return d;
   });
 
-  // 週間必要量
+  // Weekly requirement
   const weeklyNeed = {};
   for (const k of needKeys) weeklyNeed[k] = dailyNeed[k] * totalDays;
 
-  // ── STEP1: 食材ごとに担当ポケモンを決定 ──
-  // 各食材を最も効率よく集められるポケモンに割り当て
+  // ── STEP 1: Decide which Pokémon is responsible for each ingredient ──
+  // Assign each ingredient to the Pokémon that gathers it most efficiently
   const pokemonReqDays = new Array(n).fill(0);
 
   for (const k of needKeys) {
     if (weeklyNeed[k] <= 0) continue;
-    // この食材を持てるポケモン中で最高レートのものを担当者に
+    // Among Pokémon that can gather this ingredient, pick the one with the highest rate
     let bestIdx = -1, bestRate = 0;
     for (let i = 0; i < n; i++) {
       const rate = dailyRates[i][k] ?? 0;
       if (rate > bestRate) { bestRate = rate; bestIdx = i; }
     }
     if (bestIdx < 0) continue;
-    // 担当ポケモンの必要稼働日数を更新（浮動小数点誤差対策で+0.5%マージン）
+    // Update the responsible Pokémon's required active days (+0.5% margin for floating-point safety)
     const daysNeeded = (weeklyNeed[k] / bestRate) * 1.005;
     pokemonReqDays[bestIdx] = Math.max(pokemonReqDays[bestIdx], daysNeeded);
   }
 
-  // ── STEP2: 各ポケモンを必要日数分稼働 ──
-  // 合計稼働が 枠数×7日 を超える場合は比例縮小
+  // ── STEP 2: Activate each Pokémon for its required number of days ──
+  // If total activity exceeds slots × 7 days, scale down proportionally
   const totalReq = pokemonReqDays.reduce((s, d) => s + d, 0);
   const maxTotal = ingSlotCount * totalDays;
 
   if (totalReq <= maxTotal) {
-    // 枠に余裕あり: そのまま必要日数分稼働
+    // Slots have room: activate for exactly the days needed
     for (let i = 0; i < n; i++) {
       workDays[i] = Math.min(pokemonReqDays[i], totalDays);
     }
   } else {
-    // 枠が足りない: 比例縮小（全員が同じ割合で削られる）
+    // Not enough slots: scale down proportionally (everyone is reduced by the same ratio)
     const scale = maxTotal / totalReq;
     for (let i = 0; i < n; i++) {
       workDays[i] = Math.min(pokemonReqDays[i] * scale, totalDays);
@@ -1515,7 +1521,7 @@ function calcIngPokemonSchedule(ingEntries, ingSlotCount, dailyNeed) {
 
 
 function calculate() {
-  // ── チームおてぼボーナス集計 ──
+  // ── Tally the team's Helping Bonus ──
   let teamOtebonusRaw = 0;
 
   const SUB_UNLOCK_LEVELS = [10, 25, 50, 70, 80];
@@ -1524,10 +1530,10 @@ function calculate() {
     if (!e) continue;
     const scale = slot.scale ?? 1.0;
     const activeSubs = e.subs.filter((_, i) => e.level >= SUB_UNLOCK_LEVELS[i]);
-    teamOtebonusRaw += activeSubs.filter(s => s === "おてぼ").length * 0.05 * scale;
+    teamOtebonusRaw += activeSubs.filter(s => s === "Helping Bonus").length * 0.05 * scale;
   }
 
-  // 食材枠 + 食材セレクト枠の合計で交代計算
+  // Rotation calculated over ingredient slots + ingredient-select slots combined
   const ingSlotCount = comp.ing;
   const ingPokemons = pokemonSlots.filter(s => s.slotType === "ing" || s.slotType === "selIng");
   const ingN = ingPokemons.length;
@@ -1537,15 +1543,15 @@ function calculate() {
       const e = getEntry(slot.prefix);
       if (!e) continue;
       const activeSubsIng = e.subs.filter((_, i) => e.level >= SUB_UNLOCK_LEVELS[i]);
-      teamOtebonusRaw += activeSubsIng.filter(s => s === "おてぼ").length * 0.05 * ingScale;
+      teamOtebonusRaw += activeSubsIng.filter(s => s === "Helping Bonus").length * 0.05 * ingScale;
     }
   }
   const teamOtebonus = teamOtebonusRaw;
 
-  // ── STEP1: 在庫 + きのみ・スキルの1週間分を先に計算 ──
-  // これらは交代なしでフル稼働するので確実に集まる
+  // ── STEP 1: First calculate a week's worth of stock + Berry/Skill Pokémon ──
+  // These run full-time without rotating, so they're guaranteed
   const stockMap = getStockMap();
-  let haveFixed = { ...stockMap }; // 週頭在庫
+  let haveFixed = { ...stockMap }; // starting-of-week stock
   const perPokemon = [];
 
   for (const slot of pokemonSlots.filter(s => s.slotType !== "ing")) {
@@ -1562,7 +1568,7 @@ function calculate() {
     perPokemon.push({ name: e.pokemon.name, slotType: slot.slotType, daily: displayDaily, workDays: workDaysFixed, skillInfo });
   }
 
-  // ── STEP2: 21食分の必要量を計算 ──
+  // ── STEP 2: Calculate the requirement for 21 meals ──
   const need = {};
   for (const id of recipeRows) {
     const genre = document.getElementById(`rg_${id}`)?.value;
@@ -1577,17 +1583,17 @@ function calculate() {
     }
   }
 
-  // ── STEP3: 在庫＋きのみ・スキル分を差し引いた「食材ポケモンが集めるべき残量」を計算 ──
+  // ── STEP 3: Subtract stock + Berry/Skill amounts to get the remainder ingredient Pokémon need to gather ──
   const needAfterFixed = {};
   for (const k of Object.keys(need)) {
     const remaining = (need[k] ?? 0) - (haveFixed[k] ?? 0);
     if (remaining > 0) needAfterFixed[k] = remaining;
-    // 0以下ならすでに充足 → 食材ポケモンの担当なし
+    // if 0 or less it's already covered → no ingredient Pokémon needed for it
   }
   const dailyNeedForIng = {};
   for (const [k, v] of Object.entries(needAfterFixed)) dailyNeedForIng[k] = v / 7;
 
-  // ── STEP4: 食材ポケモンの最適稼働スケジュール計算 ──
+  // ── STEP 4: Calculate the optimal activity schedule for ingredient Pokémon ──
   const ingEntries = [];
   for (const slot of ingPokemons) {
     const e = getEntry(slot.prefix);
@@ -1597,7 +1603,7 @@ function calculate() {
 
   const workDays = calcIngPokemonSchedule(ingEntries, ingSlotCount, dailyNeedForIng);
 
-  // ── STEP5: 食材ポケモンの獲得量を加算 ──
+  // ── STEP 5: Add up ingredient Pokémon's gains ──
   let have = { ...haveFixed };
 
   ingEntries.forEach(({ entry: e }, i) => {
@@ -1611,7 +1617,7 @@ function calculate() {
     perPokemon.push({ name: e.pokemon.name, slotType: "ing", daily: displayDaily, workDays: workDays[i], skillInfo });
   });
 
-  // ── STEP6: 充足判定 ──
+  // ── STEP 6: Determine sufficiency ──
   const needKeys = Object.keys(need);
   let allOk = true, minRatio = Infinity;
   for (const k of needKeys) {
@@ -1621,7 +1627,7 @@ function calculate() {
   }
   if (needKeys.length === 0) { minRatio = 1; allOk = true; }
 
-  // 余剰食材
+  // Surplus ingredients
   const surplus = {};
   for (const [k, v] of Object.entries(have)) {
     const leftover = v - (need[k] ?? 0);
@@ -1629,7 +1635,7 @@ function calculate() {
   }
 
   const surplusDays = allOk ? 7 * (minRatio - 1) : 0;
-  // 実際にかかる日数 = 食材ポケモンの稼働日数合計 / 食材枠数
+  // Actual days needed = total ingredient-Pokémon active days / number of ingredient slots
   const totalIngWorkDays = workDays.reduce((s, d) => s + d, 0);
   const actualDays = ingSlotCount > 0 && workDays.length > 0
     ? totalIngWorkDays / ingSlotCount
@@ -1642,105 +1648,105 @@ function calculate() {
 function renderResult(have, need, surplus, perPokemon, allOk, minRatio, surplusDays, stockMap={}, teamOtebonus=0, actualDays=null) {
   const needKeys = Object.keys(need);
 
-  // 食材充足バー
+  // Ingredient sufficiency bar
   const ingHtml = needKeys.map(k => {
     const h=have[k]??0, n=need[k];
     const ok=h>=n;
     const pct=Math.round(Math.min(h/n,1)*100);
     return `<div class="pks-ing-card">
-      <div class="pks-ing-name">${k}</div>
+      <div class="pks-ing-name">${ingLabel(k)}</div>
       <div class="pks-ing-bar-bg"><div class="pks-ing-bar ${ok?"ok":"ng"}" style="width:${pct}%"></div></div>
       <div class="pks-ing-nums">
-        <span class="pks-ing-have ${ok?"ok":"ng"}">${h.toFixed(1)}個</span>
-        <span class="pks-ing-need">必要:${n}</span>
+        <span class="pks-ing-have ${ok?"ok":"ng"}">${h.toFixed(1)}</span>
+        <span class="pks-ing-need">Needed: ${n}</span>
       </div>
     </div>`;
   }).join("");
 
-  // 全食材が揃うまでの日数
-  // 集め切れる場合: actualDays（実稼働日数）を使用
-  // 集め切れない場合: 7 / minRatio（現在の収集ペースで何日かかるか）
+  // Days until all ingredients are ready
+  // If achievable: use actualDays (actual active days)
+  // If not achievable: 7 / minRatio (days needed at the current gathering pace)
   let daysNeeded;
   if (allOk) {
     daysNeeded = actualDays !== null ? actualDays : (needKeys.length > 0 ? (7 / minRatio) : 0);
   } else {
-    // 不足している場合: 必要量 / 1日あたり収集ペース = 何日かかるか
-    // minRatio = have/need なので、need日数 = 7 / minRatio
+    // If short: requirement / daily gathering pace = days needed
+    // minRatio = have/need, so days needed = 7 / minRatio
     daysNeeded = needKeys.length > 0 ? (7 / minRatio) : 7;
   }
 
-  // 時間的余力 or 不足
+  // Time buffer or shortfall
   let detailHtml = "";
   if (allOk) {
     detailHtml = `<div class="pks-surplus">
-      <div class="pks-surplus-label">⏱ 全食材が揃うまでの日数</div>
-      <div class="pks-surplus-val">${daysNeeded.toFixed(1)} 日</div>
+      <div class="pks-surplus-label">⏱ Days Until All Ingredients Are Ready</div>
+      <div class="pks-surplus-val">${daysNeeded.toFixed(1)} days</div>
       <div class="pks-surplus-desc">
-        7日間で余裕をもって準備できます。<br>
-        余力：${(7 - daysNeeded).toFixed(1)}日分 ／ 充足率：${(minRatio*100).toFixed(0)}%
+        You can comfortably prepare everything within 7 days.<br>
+        Buffer: ${(7 - daysNeeded).toFixed(1)} days / Fulfillment: ${(minRatio*100).toFixed(0)}%
       </div>
     </div>`;
   } else {
     const shortages = needKeys
       .filter(k=>(have[k]??0)<need[k])
-      .map(k=>`・${k}：あと ${(need[k]-(have[k]??0)).toFixed(1)} 個不足`)
+      .map(k=>`・${ingLabel(k)}: short by ${(need[k]-(have[k]??0)).toFixed(1)}`)
       .join("<br>");
     detailHtml = `<div class="pks-shortage">
-      <div class="pks-shortage-label">⏱ 全食材を集めるのに必要な日数</div>
-      <div style="font-family:'Zen Maru Gothic',sans-serif;font-size:26px;font-weight:900;color:var(--pks-red);margin:4px 0;">${daysNeeded.toFixed(1)} 日必要</div>
+      <div class="pks-shortage-label">⏱ Days Needed to Gather All Ingredients</div>
+      <div style="font-family:'Zen Maru Gothic',sans-serif;font-size:26px;font-weight:900;color:var(--pks-red);margin:4px 0;">${daysNeeded.toFixed(1)} days needed</div>
       <div class="pks-shortage-item" style="margin-top:8px;">
-        <b style="color:var(--pks-red);">⚠️ 不足している食材</b><br>
+        <b style="color:var(--pks-red);">⚠️ Ingredients in Short Supply</b><br>
         ${shortages}
       </div>
     </div>`;
   }
 
-  // ポケモン別食材内訳（1日あたり）
+  // Per-Pokémon ingredient breakdown (per day)
   const slotEmoji = { berry:"🍒", ing:"🍳", selIng:"🎯", skill:"⚡" };
   const pbHtml = perPokemon.map(p => {
     const workNote = p.slotType === "ing"
-      ? `<span style="font-size:10px;color:var(--pks-text-dim);margin-left:6px;">実稼働 ${p.workDays.toFixed(1)}日/週</span>`
+      ? `<span style="font-size:10px;color:var(--pks-text-dim);margin-left:6px;">Active ${p.workDays.toFixed(1)} days/week</span>`
       : `<span style="font-size:10px;color:var(--pks-text-dim);margin-left:6px;"></span>`;
     const lines = Object.entries(p.daily)
       .filter(([,v])=>v>0.01)
-      .map(([k,v])=>`<div class="pks-pb-row"><span class="pks-pb-ing">${k}</span><span class="pks-pb-val">${v.toFixed(2)}個/日</span></div>`)
+      .map(([k,v])=>`<div class="pks-pb-row"><span class="pks-pb-ing">${ingLabel(k)}</span><span class="pks-pb-val">${v.toFixed(2)}/day</span></div>`)
       .join("");
-    // スキル発動回数表示
+    // Display skill trigger count
     let skillLine = "";
     if (p.skillInfo) {
       if (sleepTap) {
-        skillLine = `<div class="pks-pb-row"><span class="pks-pb-ing">スキル発動（週）</span><span style="color:var(--pks-purple);font-weight:700;">${p.skillInfo.total.toFixed(1)}回</span></div>`;
+        skillLine = `<div class="pks-pb-row"><span class="pks-pb-ing">Skill Triggers (week)</span><span style="color:var(--pks-purple);font-weight:700;">${p.skillInfo.total.toFixed(1)} times</span></div>`;
       } else {
-        skillLine = `<div class="pks-pb-row"><span class="pks-pb-ing">スキル発動（昼）</span><span style="color:var(--pks-purple);font-weight:700;">${p.skillInfo.awake.toFixed(1)}回/週</span></div>`
-          + `<div class="pks-pb-row"><span class="pks-pb-ing">スキル発動（夜・上限${p.skillInfo.sleepMax}回/日）</span><span style="color:var(--pks-purple);font-weight:700;">${p.skillInfo.sleep.toFixed(1)}回/週</span></div>`;
+        skillLine = `<div class="pks-pb-row"><span class="pks-pb-ing">Skill Triggers (Day)</span><span style="color:var(--pks-purple);font-weight:700;">${p.skillInfo.awake.toFixed(1)}/week</span></div>`
+          + `<div class="pks-pb-row"><span class="pks-pb-ing">Skill Triggers (Night, capped at ${p.skillInfo.sleepMax}/day)</span><span style="color:var(--pks-purple);font-weight:700;">${p.skillInfo.sleep.toFixed(1)}/week</span></div>`;
       }
     }
     return `<div class="pks-pb-card">
       <div class="pks-pb-name">${slotEmoji[p.slotType]??""} ${p.name}${workNote}</div>
-      ${lines||'<div style="font-size:11px;color:var(--pks-text-dim)">食材なし</div>'}
+      ${lines||'<div style="font-size:11px;color:var(--pks-text-dim)">No ingredients</div>'}
       ${skillLine}
     </div>`;
   }).join("");
 
-  // 余剰食材（週間）
+  // Surplus ingredients (weekly)
   const surplusEntries = Object.entries(surplus).sort((a,b)=>b[1]-a[1]);
   const surplusListHtml = surplusEntries.length
-    ? surplusEntries.map(([k,v])=>`・${k}：${v.toFixed(1)}個/週`).join("<br>")
-    : "なし";
+    ? surplusEntries.map(([k,v])=>`・${ingLabel(k)}: ${v.toFixed(1)}/week`).join("<br>")
+    : "None";
 
   document.getElementById("resultContent").innerHTML = `
     <div class="pks-verdict">
-      <div class="pks-verdict-main ${allOk?"ok":"ng"}">${allOk?"✅ 21食分 準備OK！":"❌ 食材が不足しています"}</div>
-      <div class="pks-verdict-sub">1週間（7日）・21食分シミュレーション結果</div>
-      ${teamOtebonus > 0 ? `<div style="font-size:11px;color:var(--pks-green);margin-top:4px;">🤝 チームおてぼボーナス +${Math.round(teamOtebonus*100)}%（編成中のおてぼ持ち分・上限35%）</div>` : ""}
-      ${Object.keys(stockMap).length > 0 ? `<div style="font-size:11px;color:var(--pks-text-dim);margin-top:4px;">週頭在庫込み</div>` : ""}
+      <div class="pks-verdict-main ${allOk?"ok":"ng"}">${allOk?"✅ Ready for All 21 Meals!":"❌ Ingredients Are Short"}</div>
+      <div class="pks-verdict-sub">Simulation results for 1 week (7 days), 21 meals</div>
+      ${teamOtebonus > 0 ? `<div style="font-size:11px;color:var(--pks-green);margin-top:4px;">🤝 Team Helping Bonus +${Math.round(teamOtebonus*100)}% (from Helping Bonus Pokémon on the team, capped at 35%)</div>` : ""}
+      ${Object.keys(stockMap).length > 0 ? `<div style="font-size:11px;color:var(--pks-text-dim);margin-top:4px;">Includes starting stock</div>` : ""}
     </div>
-    ${needKeys.length?`<div class="pks-result-section-title">食材ごとの充足状況（週間）</div><div class="pks-ing-grid">${ingHtml}</div>`:""}
+    ${needKeys.length?`<div class="pks-result-section-title">Ingredient Sufficiency (Weekly)</div><div class="pks-ing-grid">${ingHtml}</div>`:""}
     ${detailHtml}
-    <div class="pks-result-section-title" style="margin-top:16px;">🐾 ポケモン別 食材獲得量（1日フル稼働・げんきMAX想定）</div>
+    <div class="pks-result-section-title" style="margin-top:16px;">🐾 Per-Pokémon Ingredient Yield (Full-day active, assuming max energy)</div>
     <div class="pks-pb-list">${pbHtml}</div>
     <div class="pks-extra">
-      <div class="pks-extra-label">📦 余剰食材（週間・料理使用後の残り）</div>
+      <div class="pks-extra-label">📦 Surplus Ingredients (weekly, after dishes)</div>
       <div class="pks-extra-item">${surplusListHtml}</div>
     </div>
   `;
@@ -1749,32 +1755,29 @@ function renderResult(have, need, surplus, perPokemon, allOk, minRatio, surplusD
 loadDB();
 </script>
   </script>
-</div> <!-- pks-wrap 終了 -->
+</div> <!-- end pks-wrap -->
 
-<!-- ★★★ ここに BMC セクションを追加 ★★★ -->
+<!-- ★★★ Buy Me a Coffee section ★★★ -->
 <div style="margin: 24px 0; padding: 20px; background: rgba(169,142,232,0.08); border: 1px solid rgba(169,142,232,0.3); border-radius: 14px;">
   <p style="font-size: 14px; line-height: 1.8; margin-bottom: 12px; color: var(--pks-text);">
-    ここまで読んでくださりありがとうございます。<br>
-    今後もツール改善や攻略記事を続けていくために、<br>
-    もしよければ少しだけ応援していただけると嬉しいです。<br>
-    投げ銭は <strong>ツール開発費用やポケスリ研究のために使用させていただきます。</strong>
+    Thanks so much for reading this far.<br>
+    To keep improving this tool and writing strategy articles,<br>
+    I'd really appreciate a little support if you're willing.<br>
+    Any tips go toward <strong>tool development costs and Pokémon Sleep research.</strong>
   </p>
   <a href="https://www.buymeacoffee.com/Tofumental" target="_blank"
      style="background: #FFDD00; color: #000; padding: 12px 18px; border-radius: 8px; font-weight: bold;
             text-decoration: none; display: block; text-align: center;">
-    ☕ Buy Me a Coffee でサポートする
+    ☕ Support me on Buy Me a Coffee
   </a>
 </div>
 
-<!-- ★★★ フッター（運営者情報ページへのリンク） ★★★ -->
+<!-- ★★★ Footer (links to About / Privacy / Contact) ★★★ -->
 <footer style="text-align:center; margin: 40px 0; color: var(--pks-text-dim); font-size: 12px;">
-  <a href="about.html" style="color: var(--pks-text-dim); margin: 0 8px;">運営者情報</a>
-  <a href="privacy.html" style="color: var(--pks-text-dim); margin: 0 8px;">プライバシーポリシー</a>
-  <a href="contact.html" style="color: var(--pks-text-dim); margin: 0 8px;">お問い合わせ</a>
+  <a href="about.html" style="color: var(--pks-text-dim); margin: 0 8px;">About</a>
+  <a href="privacy.html" style="color: var(--pks-text-dim); margin: 0 8px;">Privacy Policy</a>
+  <a href="contact.html" style="color: var(--pks-text-dim); margin: 0 8px;">Contact</a>
 </footer>
-
-</body>
-</html>
 
 </body>
 </html>
