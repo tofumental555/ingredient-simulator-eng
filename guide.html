@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ツールガイド｜チーム食材シミュレーター｜ポケモンスリープ攻略</title>
+  <title>Tool Guide | Team Ingredient Simulator | Pokémon Sleep Strategy</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Nunito:wght@600;700;800&display=swap');
 
@@ -58,7 +58,7 @@
       padding: 0 16px;
     }
 
-    /* ── ヘッダー ── */
+    /* ── Header ── */
     .site-header {
       text-align: center;
       padding: 48px 16px 36px;
@@ -88,7 +88,7 @@
       margin: 0 auto 28px;
     }
 
-    /* ── ナビボタン ── */
+    /* ── Nav buttons ── */
     .nav-btn-group {
       display: flex;
       gap: 10px;
@@ -118,7 +118,7 @@
       border: 1.5px solid var(--border);
     }
 
-    /* ── セクション ── */
+    /* ── Section ── */
     .section {
       margin-bottom: 40px;
     }
@@ -147,7 +147,7 @@
       line-height: 1.3;
     }
 
-    /* ── パネル ── */
+    /* ── Panel ── */
     .panel {
       background: linear-gradient(160deg, var(--night-panel) 0%, var(--night-panel-2) 100%);
       border: 1px solid var(--border);
@@ -164,7 +164,7 @@
     }
     .panel p + p { margin-top: 10px; }
 
-    /* スクリーンショット */
+    /* Screenshots */
     .screenshot-wrap {
       margin: 16px 0;
       border-radius: 14px;
@@ -184,7 +184,7 @@
       text-align: center;
     }
 
-    /* ハイライトボックス */
+    /* Highlight box */
     .highlight-box {
       background: rgba(169,142,232,0.08);
       border: 1px solid rgba(169,142,232,0.28);
@@ -217,14 +217,14 @@
       top: 3px;
     }
 
-    /* 緑ハイライト */
+    /* Green highlight */
     .highlight-box.green {
       background: rgba(127,217,168,0.07);
       border-color: rgba(127,217,168,0.3);
     }
     .highlight-box.green .hl-title { color: var(--green); }
 
-    /* 例示ボックス */
+    /* Example box */
     .example-box {
       background: rgba(255,209,102,0.06);
       border: 1px solid rgba(255,209,102,0.2);
@@ -244,7 +244,7 @@
       line-height: 1.8 !important;
     }
 
-    /* ステップ */
+    /* Steps */
     .step-list {
       display: flex;
       flex-direction: column;
@@ -273,14 +273,14 @@
       line-height: 1.75;
     }
 
-    /* 区切り線 */
+    /* Divider */
     .divider {
       height: 1px;
       background: linear-gradient(90deg, transparent, var(--border), transparent);
       margin: 32px 0;
     }
 
-    /* フッター */
+    /* Footer */
     .footer {
       text-align: center;
       padding: 32px 16px 16px;
@@ -297,106 +297,109 @@
 
 <div class="wrap">
 
-  <!-- ヘッダー -->
+  <!-- Header -->
   <div class="site-header">
     <div class="eyebrow">POKEMON SLEEP TOOLS</div>
-    <h1>チーム食材<span>シミュレーター</span><br>ツールガイド</h1>
+    <h1>Team Ingredient<br><span>Simulator</span> Tool Guide</h1>
     <p class="hero-sub">
-      食材ポケモンの厳選判断を定量化する。<br>
-      チーム編成・目標料理・手持ちポケモンを入力して、<br>
-      週21食を作り続けられるかシミュレートします。
+      Put a number on your ingredient Pokémon selection.<br>
+      Enter your team composition, target dishes, and the Pokémon you own,<br>
+      and simulate whether you can keep cooking all 21 meals a week.
     </p>
     <div class="nav-btn-group">
-      <a href="index.html" class="nav-btn nav-btn-primary">🍳 シミュレーターを開く</a>
-      <a href="https://www.tofumentalpapa.com/entry/pksl_homepage" class="nav-btn nav-btn-secondary">📖 ブログへ</a>
+      <a href="index.html" class="nav-btn nav-btn-primary">🍳 Open the Simulator</a>
+      <a href="https://www.tofumentalpapa.com/entry/pksl_homepage" class="nav-btn nav-btn-secondary">📖 Visit the Blog</a>
     </div>
   </div>
 
-  <!-- ① 開発背景 -->
+  <!-- 1. Background -->
   <div class="section">
     <div class="section-header">
       <span class="section-num">BACKGROUND</span>
-      <h2 class="section-title">① 開発背景および目的</h2>
+      <h2 class="section-title">1. Background and Purpose</h2>
     </div>
 
     <div class="panel">
       <p>
-        これまで食材ポケモンの厳選基準は「AAA食材確率M」と言われてきました。
-        しかし、現在のポケモンスリープ環境ではこの基準だけでは不十分になっています。
+        Until now, the standard for selecting ingredient Pokémon has been the
+        so-called "AAA-ingredient probability M." But in the current Pokémon
+        Sleep environment, that standard alone is no longer enough.
       </p>
 
       <div class="highlight-box" style="margin-top:14px;">
-        <div class="hl-title">⚠️ 従来基準が通じなくなった理由</div>
+        <div class="hl-title">⚠️ Why the old standard no longer works</div>
         <ul>
-          <li>目標とする料理がどんどん大型化している</li>
-          <li>無課金／プレパス勢／微課金勢でプレイスタイルが大きく異なる</li>
-          <li>食材タイプを何体編成するかで必要量が変わる</li>
-          <li>レベル70サブスキル解放という環境変化</li>
+          <li>Target dishes keep getting larger</li>
+          <li>Playstyles vary widely between free-to-play, Premium Pass, and paying players</li>
+          <li>Required ingredient amounts change depending on how many ingredient-type Pokémon are on the team</li>
+          <li>Level 70 sub-skill unlocks have changed the environment</li>
         </ul>
       </div>
 
       <p style="margin-top:14px;">
-        こうした要素によって、プレイヤーごとに必要な食材量や厳選ラインが
-        大きく変わるようになりました。にもかかわらず、これらを
-        「定量的に判断できるツール」が存在していませんでした。
+        Because of these factors, the amount of ingredients needed and the bar
+        for "good enough" selection now varies a lot from player to player.
+        And yet, there was no tool that let you judge this quantitatively.
       </p>
       <p>
-        そこで今回、チームに何体食材タイプを入れるか、目標料理、
-        自分の手持ちポケモンのサブスキルなどを入力することで、
-        「料理を1週間作り続けられるか」を評価できるツールを作成しました。
+        So we built a tool that lets you evaluate whether you can keep cooking
+        a dish for a full week, based on how many ingredient-type Pokémon are
+        on your team, your target dishes, and the sub-skills of the Pokémon
+        you actually own.
       </p>
     </div>
 
     <div class="screenshot-wrap">
-      <img src="IMG_0516.jpeg" alt="ツール結果画面">
-      <div class="screenshot-caption">▲ 結果画面：充足状況・必要日数・ポケモン別獲得量を一括表示</div>
+      <img src="IMG_0516.jpeg" alt="Tool results screen">
+      <div class="screenshot-caption">▲ Results screen: sufficiency status, days needed, and per-Pokémon yield all shown at once</div>
     </div>
 
     <div class="panel">
       <div class="highlight-box green">
-        <div class="hl-title">✅ こんな場面で役立ちます</div>
+        <div class="hl-title">✅ Handy in situations like these</div>
         <ul>
-          <li>4種類の食材が必要な料理で、3種類が厳選済みの場合<br>
-            <span style="font-size:12px;color:var(--text-dim);">→ 最後の1体はどのサブスキルならクリアできるかを調べる</span>
+          <li>A dish needs 4 kinds of ingredients and you've already nailed down 3<br>
+            <span style="font-size:12px;color:var(--text-dim);">→ figure out which sub-skill on your last Pokémon will get you there</span>
           </li>
-          <li>余剰食材を見て、他に作れる料理がないか逆算する</li>
-          <li>レベル70サブスキルを解放した場合、どれだけ改善するかを確認する</li>
+          <li>Look at your surplus ingredients and work backward to see what else you could cook</li>
+          <li>Check how much unlocking Level 70 sub-skills would improve things</li>
         </ul>
       </div>
       <p style="margin-top:14px;">
-        皆さんのポケスリライフがより有意義なものになることを願っています。
+        We hope this helps make your Pokémon Sleep life even more rewarding.
       </p>
     </div>
   </div>
 
   <div class="divider"></div>
 
-  <!-- ② 使用方法 -->
+  <!-- 2. How to use -->
   <div class="section">
     <div class="section-header">
       <span class="section-num">HOW TO USE</span>
-      <h2 class="section-title">② 使用方法</h2>
+      <h2 class="section-title">2. How to Use It</h2>
     </div>
 
     <!-- STEP 1 -->
     <div class="panel">
       <div class="step-item" style="margin-bottom:14px;">
         <span class="step-badge">STEP 1</span>
-        <span class="step-text" style="font-size:15px;font-weight:800;color:var(--text);">チーム編成の設定</span>
+        <span class="step-text" style="font-size:15px;font-weight:800;color:var(--text);">Set Your Team Composition</span>
       </div>
-      <p>きのみ、食材、スキルタイプを何体編成するかを入力します。</p>
+      <p>Enter how many berry, ingredient, and skill-type Pokémon are on your team.</p>
 
       <div class="screenshot-wrap" style="margin:14px 0;">
-        <img src="IMG_7117.jpeg" alt="チーム編成画面">
-        <div class="screenshot-caption">▲ 編成画面：0.5刻みで細かく設定可能</div>
+        <img src="IMG_7117.jpeg" alt="Team composition screen">
+        <div class="screenshot-caption">▲ Composition screen: adjustable in increments of 0.5</div>
       </div>
 
       <div class="example-box">
-        <div class="ex-label">💡 入力例</div>
+        <div class="ex-label">💡 Example</div>
         <p>
-          ボーマンダとサーナイトは常時編成。食材タイプは常時2体。
-          デデンネが2回スキル発動したら食材にチェンジする場合は、<br>
-          <strong style="color:var(--star);">きのみ1、食材2.5、スキル1.5</strong> と入力します。
+          Salamence and Gardevoir are always on the team. There are always
+          2 ingredient-type Pokémon. If Dedenne switches to ingredients
+          after triggering its skill twice, you'd enter<br>
+          <strong style="color:var(--star);">berry 1, ingredient 2.5, skill 1.5</strong>.
         </p>
       </div>
     </div>
@@ -405,22 +408,22 @@
     <div class="panel">
       <div class="step-item" style="margin-bottom:14px;">
         <span class="step-badge">STEP 2</span>
-        <span class="step-text" style="font-size:15px;font-weight:800;color:var(--text);">ポケモンのサブスキル設定</span>
+        <span class="step-text" style="font-size:15px;font-weight:800;color:var(--text);">Register Your Pokémon's Sub-Skills</span>
       </div>
-      <p>使用するポケモン名を選択し、レベル・サブスキル・性格・食材配列を登録します。</p>
+      <p>Select the name of each Pokémon you use, and register its level, sub-skills, nature, and ingredient layout.</p>
 
       <div class="screenshot-wrap" style="margin:14px 0;">
-        <img src="IMG_7118.jpeg" alt="ポケモン設定画面">
-        <div class="screenshot-caption">▲ ポケモン設定：性格・サブスキルを詳細に登録</div>
+        <img src="IMG_7118.jpeg" alt="Pokémon settings screen">
+        <div class="screenshot-caption">▲ Pokémon settings: register nature and sub-skills in detail</div>
       </div>
 
       <div class="highlight-box">
-        <div class="hl-title">📌 計算の前提</div>
+        <div class="hl-title">📌 Calculation assumptions</div>
         <ul>
-          <li>きのみ・スキルタイプは登録ポケモンを7日間使用し続ける前提で計算</li>
-          <li>50%稼働表記のポケモンは3.5日間で計算</li>
-          <li>これらのポケモンが回収する食材が目標料理に含まれる場合は「使用する前提」でシミュレート</li>
-          <li>食材タイプのポケモンは枠内で交換しながら必要な食材を収集</li>
+          <li>Berry and skill-type Pokémon are assumed to be used continuously for all 7 days</li>
+          <li>Pokémon marked at 50% uptime are calculated as 3.5 days of use</li>
+          <li>If ingredients gathered by these Pokémon are part of a target dish, the simulation assumes they're used</li>
+          <li>Ingredient-type Pokémon are swapped in and out of the roster to gather the ingredients you need</li>
         </ul>
       </div>
     </div>
@@ -429,20 +432,20 @@
     <div class="panel">
       <div class="step-item" style="margin-bottom:14px;">
         <span class="step-badge">STEP 3</span>
-        <span class="step-text" style="font-size:15px;font-weight:800;color:var(--text);">目標料理の設定</span>
+        <span class="step-text" style="font-size:15px;font-weight:800;color:var(--text);">Set Your Target Dishes</span>
       </div>
-      <p>目標料理を登録してください。複数料理を設定可能ですが、<strong style="color:var(--star);">合計21食</strong>になるように設定してください。</p>
+      <p>Register your target dishes. You can set more than one, but make sure the total adds up to <strong style="color:var(--star);">21 meals</strong>.</p>
 
       <div class="screenshot-wrap" style="margin:14px 0;">
-        <img src="IMG_7123.jpeg" alt="料理登録画面">
-        <div class="screenshot-caption">▲ 料理登録：ジャンル→料理名の2段階で選択</div>
+        <img src="IMG_7123.jpeg" alt="Dish registration screen">
+        <div class="screenshot-caption">▲ Dish registration: choose in two steps, category then dish name</div>
       </div>
 
-      <p>週末に食材を持ち越した状態でシミュレーションすることもできます。持ち越す食材がある場合は、週頭在庫欄に登録してください。</p>
+      <p>You can also simulate carrying leftover ingredients over from the previous week. If you have ingredients to carry over, register them in the starting-stock field.</p>
 
       <div class="screenshot-wrap" style="margin:14px 0;">
-        <img src="IMG_7120.jpeg" alt="在庫入力画面">
-        <div class="screenshot-caption">▲ 週頭在庫：前週の持ち越し食材を加味して計算</div>
+        <img src="IMG_7120.jpeg" alt="Stock entry screen">
+        <div class="screenshot-caption">▲ Starting stock: factors in ingredients carried over from the previous week</div>
       </div>
     </div>
 
@@ -450,47 +453,47 @@
     <div class="panel">
       <div class="step-item" style="margin-bottom:14px;">
         <span class="step-badge">STEP 4</span>
-        <span class="step-text" style="font-size:15px;font-weight:800;color:var(--text);">結果の確認</span>
+        <span class="step-text" style="font-size:15px;font-weight:800;color:var(--text);">Check Your Results</span>
       </div>
-      <p>計算結果が出力されます。</p>
+      <p>The calculation results are displayed.</p>
 
       <div class="screenshot-wrap" style="margin:14px 0;">
-        <img src="IMG_7121.jpeg" alt="結果画面1">
-        <div class="screenshot-caption">▲ 充足判定・必要日数・不足食材を一覧表示</div>
+        <img src="IMG_7121.jpeg" alt="Results screen 1">
+        <div class="screenshot-caption">▲ A full list of sufficiency status, days needed, and any shortfalls</div>
       </div>
 
       <div class="step-list">
         <div class="step-item">
-          <span class="step-badge">判定</span>
-          <span class="step-text">登録ポケモンだけで食材を集め切れるか判定。集め切れる場合は「何日くらい余力があるか」、不足している場合は「いくつ不足しているか」「あと何日あれば集められるか」を表示</span>
+          <span class="step-badge">Verdict</span>
+          <span class="step-text">Shows whether your registered Pokémon alone can gather enough ingredients. If they can, it shows roughly how much buffer you have; if not, it shows how much you're short and how many more days it would take to catch up</span>
         </div>
         <div class="step-item">
-          <span class="step-badge">能力値</span>
-          <span class="step-text">登録ポケモンを1日フルで使用した場合、食材を何個回収できるかを表示</span>
+          <span class="step-badge">Output</span>
+          <span class="step-text">Shows how many ingredients your registered Pokémon can gather over a full day of use</span>
         </div>
         <div class="step-item">
-          <span class="step-badge">余剰</span>
-          <span class="step-text">料理に使用しない余剰食材を集計して表示</span>
+          <span class="step-badge">Surplus</span>
+          <span class="step-text">Tallies up any leftover ingredients not used in your dishes</span>
         </div>
       </div>
 
       <div class="screenshot-wrap" style="margin:14px 0;">
-        <img src="IMG_7122.jpeg" alt="結果画面2">
-        <div class="screenshot-caption">▲ ポケモン別獲得量と余剰食材の詳細</div>
+        <img src="IMG_7122.jpeg" alt="Results screen 2">
+        <div class="screenshot-caption">▲ Detailed per-Pokémon yield and surplus ingredients</div>
       </div>
     </div>
 
   </div>
 
-  <!-- 下部ナビ -->
+  <!-- Bottom nav -->
   <div style="text-align:center;padding:24px 0 8px;">
     <div class="nav-btn-group">
-      <a href="index.html" class="nav-btn nav-btn-primary">🍳 シミュレーターを開く</a>
+      <a href="index.html" class="nav-btn nav-btn-primary">🍳 Open the Simulator</a>
     </div>
   </div>
 
   <div class="footer">
-    <p>トフメンタルパパのポケモンスリープ攻略ツール</p>
+    <p>Tofu Mental Papa's Pokémon Sleep Strategy Tools</p>
   </div>
 
 </div>
