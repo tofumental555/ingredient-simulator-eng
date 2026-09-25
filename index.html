@@ -445,6 +445,7 @@
     border: 1px solid rgba(169,142,232,0.3);
     border-radius: 14px;
     padding: 14px 16px;
+    margin-top: 16px;
     margin-bottom: 20px;
     font-size: 12px;
     color: var(--pks-text-dim);
@@ -636,6 +637,18 @@ function normIng(n) { return n; }
    pass-through. Kept as a function so every call site below still works
    unchanged, and so a display-only override can be added here later if needed. */
 function ingLabel(name) { return name; }
+
+/* Escapes a string for safe use inside an HTML attribute value (e.g. value="...").
+   Needed because several dish names now contain literal double quotes
+   (e.g. "Solar Power" Tomato Curry) which would otherwise break the
+   surrounding <option value="..."> markup and silently corrupt the dropdown. */
+function escHtml(s) {
+  return String(s)
+    .replace(/&/g, "&amp;")
+    .replace(/"/g, "&quot;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
 
 /* ===== Constants ===== */
 const SUB_SKILLS  = ["Other","Berry Finding S","Helping Speed M","Helping Speed S","Helping Bonus","Ingredient Finder M","Ingredient Finder S","Skill Trigger M","Skill Trigger S","Inventory Up S","Inventory Up M","Inventory Up L"];
@@ -914,7 +927,7 @@ function optsPokemon(category) {
   const types = [...new Set(filtered.map(p => p.type))].sort();
   return types.map(type => {
     const group = filtered.filter(p => p.type === type);
-    return `<optgroup label="${type}">${group.map(p => `<option value="${p.name}">${p.name}</option>`).join("")}</optgroup>`;
+    return `<optgroup label="${escHtml(type)}">${group.map(p => `<option value="${escHtml(p.name)}">${escHtml(p.name)}</option>`).join("")}</optgroup>`;
   }).join("");
 }
 function optsSub() {
@@ -991,7 +1004,7 @@ function getAllIngredientNames() {
 
 function buildIngOpts(sel) {
   return getAllIngredientNames()
-    .map(n => `<option value="${n}"${n===sel?" selected":""}>${ingLabel(n)}</option>`)
+    .map(n => `<option value="${escHtml(n)}"${n===sel?" selected":""}>${escHtml(ingLabel(n))}</option>`)
     .join("");
 }
 
@@ -1037,10 +1050,10 @@ function getStockMap() {
 
 /* ===== Recipe rows ===== */
 function buildGenreOpts(sel) {
-  return RECIPE_DATA.genres.map(g => `<option value="${g}"${g===sel?" selected":""}>${g}</option>`).join("");
+  return RECIPE_DATA.genres.map(g => `<option value="${escHtml(g)}"${g===sel?" selected":""}>${escHtml(g)}</option>`).join("");
 }
 function buildRecipeOpts(genre) {
-  return Object.keys(RECIPE_DATA.recipes[genre]??{}).map(n => `<option value="${n}">${n}</option>`).join("");
+  return Object.keys(RECIPE_DATA.recipes[genre]??{}).map(n => `<option value="${escHtml(n)}">${escHtml(n)}</option>`).join("");
 }
 
 function addRecipeRow() {
