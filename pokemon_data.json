@@ -2491,6 +2491,26 @@
     "3c": 3,
     "maxInventory": 30
   },
+    {
+    "name": "Mewtwo",
+    "no": 150,
+    "helpTime": 2300,
+    "ingredientFindRate": 16.0,
+    "skillRate": 2.9,
+    "skillType": "Psystrike",
+    "type": "Psychic",
+    "category": "Skill",
+    "ingredientA": "Greengrass Soybeans",
+    "ingredientB": "Greengrass Corn",
+    "ingredientC": "Soft Potato",
+    "1a": 1,
+    "2a": 2,
+    "2b": 2,
+    "3a": 4,
+    "3b": 3,
+    "3c": 3,
+    "maxInventory": 24
+  },
   {
     "name": "Hawlucha",
     "no": 701,
