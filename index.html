@@ -86,12 +86,13 @@
     label { display: block; font-size: 11px; font-weight: 700; color: var(--pks-text-dim); margin-bottom: 4px; }
     .pks-sw { position: relative; }
     .pks-sw::after { content: "▾"; position: absolute; right: 11px; top: 50%; transform: translateY(-50%); color: var(--pks-purple); font-size: 11px; pointer-events: none; }
-    select, input[type="number"] {
+    select, input[type="number"], input[type="text"], textarea {
       width: 100%; font-family: 'Nunito', sans-serif; font-size: 13.5px; font-weight: 700;
       color: var(--pks-text); background: rgba(22,16,41,0.6);
       border: 1.5px solid var(--pks-border); border-radius: 9px; padding: 8px 11px; appearance: none; outline: none;
     }
-    select:focus, input[type="number"]:focus { border-color: var(--pks-purple); }
+    textarea { resize: vertical; font-size: 12px; line-height: 1.5; }
+    select:focus, input[type="number"]:focus, input[type="text"]:focus, textarea:focus { border-color: var(--pks-purple); }
     .pks-row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
     .pks-subs { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
     .pks-subs .pks-sw:last-child { grid-column: span 2; }
@@ -323,6 +324,55 @@
     .pks-accordion-btn:hover { border-color: var(--pks-purple); color: var(--pks-text); }
     .pks-accordion-body { display: none; margin-top: 8px; }
     .pks-accordion-body.open { display: block; }
+
+    /* ===== Save / Load ===== */
+    .pks-saved-bar { margin-bottom: 10px; }
+    .pks-save-row {
+      display: grid; grid-template-columns: 1fr auto; gap: 8px;
+      align-items: center; margin-top: 10px;
+    }
+    .pks-save-btn {
+      font-family: 'Zen Maru Gothic', sans-serif; font-size: 12.5px; font-weight: 800;
+      color: var(--pks-green); background: rgba(127,217,168,0.12);
+      border: 1.5px solid var(--pks-border-green); border-radius: 9px;
+      padding: 8px 14px; min-height: 38px; cursor: pointer; white-space: nowrap;
+      touch-action: manipulation;
+    }
+    .pks-save-msg { font-size: 11.5px; min-height: 16px; margin-top: 6px; line-height: 1.6; }
+    .pks-note { font-size: 11.5px; color: var(--pks-text-dim); line-height: 1.8; margin-bottom: 12px; }
+    .pks-saved-item {
+      display: flex; align-items: center; justify-content: space-between; gap: 8px;
+      background: rgba(22,16,41,0.5); border: 1.5px solid var(--pks-border);
+      border-radius: 10px; padding: 8px 11px; margin-bottom: 6px;
+    }
+    .pks-saved-main { min-width: 0; }
+    .pks-saved-name { font-size: 12.5px; font-weight: 800; color: var(--pks-star-soft); word-break: break-all; }
+    .pks-saved-meta { font-size: 10.5px; color: var(--pks-text-dim); margin-top: 2px; }
+    .pks-saved-empty { font-size: 12px; color: var(--pks-text-dim); padding: 6px 2px 10px; }
+    .pks-danger-link {
+      display: block; margin: 10px auto 0; background: none; border: none;
+      color: var(--pks-red); font-size: 11px; text-decoration: underline; cursor: pointer;
+    }
+    .pks-divider { border: none; border-top: 1px solid var(--pks-border); margin: 14px 0; }
+    .pks-saved-actions { display: flex; gap: 6px; flex-shrink: 0; }
+    .pks-del-btn {
+      font-family: 'Zen Maru Gothic', sans-serif; font-size: 12px; font-weight: 800;
+      min-width: 64px; min-height: 40px; padding: 6px 12px; border-radius: 9px;
+      color: var(--pks-red); background: rgba(255,126,126,0.15);
+      border: 1.5px solid rgba(255,126,126,0.45);
+      cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: rgba(255,126,126,0.3);
+    }
+    .pks-del-btn.danger { background: rgba(255,126,126,0.4); color: #fff; }
+    .pks-del-btn.cancel { color: var(--pks-text); background: rgba(169,142,232,0.15); border-color: var(--pks-border); }
+    .pks-saved-item.confirming { border-color: rgba(255,126,126,0.5); }
+    .pks-delall-box { margin-top: 12px; text-align: center; }
+    .pks-delall-confirm { background: rgba(255,126,126,0.08); border: 1.5px solid rgba(255,126,126,0.4); border-radius: 10px; padding: 10px; }
+    .pks-delall-confirm p { font-size: 12px; color: var(--pks-text); margin-bottom: 8px; line-height: 1.6; }
+    .pks-delall-confirm .pks-saved-actions { justify-content: center; }
+
+    /* ===== Event buff ===== */
+    #eventBuffInputs.off { opacity: 0.45; }
+    .pks-event-note { font-size: 11px; color: var(--pks-text-dim); line-height: 1.8; margin-top: 10px; }
   </style>
 </head>
 <body>
@@ -438,7 +488,37 @@
         </div>
       </div>
     </div>
-    <button class="pks-btn-primary" id="btnToStep1" disabled>Next: Register Pokémon →</button>
+
+    <div class="pks-panel">
+      <div class="pks-panel-title">🎉 Event Buff</div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+        <div>
+          <div style="font-size:13px;font-weight:700;color:var(--pks-text);">Apply event buff</div>
+          <div style="font-size:11px;color:var(--pks-text-dim);margin-top:2px;">While OFF, your values are kept but not used in calculations</div>
+        </div>
+        <div class="pks-toggle-wrap" onclick="toggleEventBuff()" id="eventBuffToggleWrap">
+          <div class="pks-toggle" id="eventBuffToggle"></div>
+        </div>
+      </div>
+      <div id="eventBuffInputs" class="off">
+        <div class="pks-row2">
+          <div class="field">
+            <label for="eventAdd">Ingredient-type yield (+ count)</label>
+            <input type="number" id="eventAdd" min="0" step="1" value="1" inputmode="decimal">
+          </div>
+          <div class="field">
+            <label for="eventMult">Ingredients from skills (× multiplier)</label>
+            <input type="number" id="eventMult" min="0" step="0.1" value="1.5" inputmode="decimal">
+          </div>
+        </div>
+      </div>
+      <p class="pks-event-note">
+        ・ "+ count" is added to the number of ingredients per Help for Ingredient-type Pokémon<br>
+        ・ "× multiplier" is applied to <b style="color:var(--pks-star);">Ingredient Draw S (Ingredient Select) only</b>. Ingredients gained from any other skill (e.g. Ingredient Magnet S) are not included in the calculation<br>
+        ・ Enter the values by hand for each event
+      </p>
+    </div>
+    <button class="pks-btn-primary" id="btnToStep1" disabled style="margin-bottom:22px;">Next: Register Pokémon →</button>
 <!-- Notes -->
   <div style="
     background: rgba(169,142,232,0.08);
@@ -489,6 +569,17 @@
       ・ With no tapping during sleep, skill activations are calculated as:<br>
       　up to <b>1/day</b> for Berry/Ingredient types, up to <b>2/day</b> for Skill types<br>
     </div>
+    <div style="margin-top:8px;">
+      <b style="color:var(--pks-text);">[About the event buff]</b><br>
+      ・ For Ingredient-type Pokémon, the number you enter is added to the ingredients gained per Help<br>
+      ・ The skill-ingredient multiplier is applied to <b style="color:var(--pks-star);">Ingredient Draw S (Ingredient Select) only</b> (all other skills are not included in the calculation)<br>
+      ・ While the toggle is OFF, the normal calculation is used<br>
+    </div>
+    <div style="margin-top:8px;">
+      <b style="color:var(--pks-text);">[About saving Pokémon]</b><br>
+      ・ Pokémon you register can be saved with "Save" in <b>this browser on this device</b>, and loaded again next time<br>
+      ・ Saved data is lost if you clear your browser data or switch devices, so we recommend backing it up with "Export"<br>
+    </div>
   </div>
 </div>
 
@@ -497,6 +588,43 @@
     <div id="pokemonSections"></div>
     <button class="pks-btn-secondary" id="btnBack0">← Edit Team</button>
     <button class="pks-btn-primary" id="btnToStep2">Next: Register Dishes →</button>
+
+    <!-- Saved Pokémon manager (export / import) -->
+    <div class="pks-panel" id="savedManagerPanel" style="margin-top:16px;">
+      <div class="pks-panel-title">📚 Saved Pokémon</div>
+      <p class="pks-note">
+        These are the Pokémon you've saved with the "💾 Save" button on each card. Data is stored in this browser on this device.
+        It will be lost if you clear your browser data or switch devices, so please back it up with "Export".
+      </p>
+      <div id="savedList"></div>
+
+      <hr class="pks-divider">
+
+      <div class="pks-panel-title" style="font-size:12px;margin-bottom:8px;">⬇ Export (backup)</div>
+      <button class="pks-btn-secondary" type="button" onclick="exportDownload()" style="margin-top:0">Download as file (.json)</button>
+      <button class="pks-btn-secondary" type="button" onclick="exportCopy()">Copy JSON</button>
+      <textarea id="exportText" class="pks-hidden" rows="5" readonly style="margin-top:8px;"></textarea>
+
+      <hr class="pks-divider">
+
+      <div class="pks-panel-title" style="font-size:12px;margin-bottom:8px;">⬆ Import (restore / move from another device)</div>
+      <div class="field">
+        <label for="importFile">Choose a JSON file</label>
+        <input type="file" id="importFile" accept=".json,application/json" onchange="importFromFile(this)"
+               style="width:100%;font-size:12px;color:var(--pks-text-dim);">
+      </div>
+      <div class="field">
+        <label for="importText">Or paste JSON</label>
+        <textarea id="importText" rows="4" placeholder='{"app":"pokesleep-ingredient-simulator-en", ...}'></textarea>
+      </div>
+      <button class="pks-btn-secondary" type="button" onclick="importFromTextarea()" style="margin-top:0">Import pasted content</button>
+      <p class="pks-note" style="margin-top:8px;margin-bottom:0;">
+        Importing adds to your existing data. Nothing already saved is deleted, and entries with identical content are skipped.
+      </p>
+
+      <div id="savedMsg" class="pks-save-msg"></div>
+      <div id="savedDeleteAllBox"></div>
+    </div>
   </div>
 
   <!-- ===== STEP 2: Register Dishes ===== -->
@@ -691,6 +819,26 @@ function toggleSleepTap() {
   wrap.classList.toggle("on", sleepTap);
 }
 
+// Event buff (hand-entered values + apply toggle)
+let eventBuffOn = false;
+function toggleEventBuff() {
+  eventBuffOn = !eventBuffOn;
+  document.getElementById("eventBuffToggleWrap").classList.toggle("on", eventBuffOn);
+  document.getElementById("eventBuffInputs").classList.toggle("off", !eventBuffOn);
+}
+// add:  count added to the ingredients per Help of Ingredient-type Pokémon
+// mult: multiplier applied to the ingredients gained from Ingredient Select (Ingredient Draw S)
+function getEventBuff() {
+  if (!eventBuffOn) return { on: false, add: 0, mult: 1 };
+  const rawAdd  = document.getElementById("eventAdd")?.value;
+  const rawMult = document.getElementById("eventMult")?.value;
+  let add = Number(rawAdd);
+  if (rawAdd === "" || rawAdd == null || !Number.isFinite(add) || add < 0) add = 0;
+  let mult = Number(rawMult);
+  if (rawMult === "" || rawMult == null || !Number.isFinite(mult) || mult <= 0) mult = 1;
+  return { on: true, add, mult };
+}
+
 // Registered Pokémon slots: [{slotType, slotLabel, prefix}]
 let pokemonSlots = [];
 
@@ -711,6 +859,10 @@ async function loadDB() {
 }
 
 function initEvents() {
+  // Load saved Pokémon
+  loadSavedFromStorage();
+  renderSavedManager();
+
   document.getElementById("btnToStep1").addEventListener("click", () => {
     const saved = savePokemonSettings();
     // Keep the registered count of ingredient Pokémon (it may change when composition changes)
@@ -942,6 +1094,11 @@ function optsPattern() {
 
 function pokemonFormHTML(pre, category) {
   return `
+    <div class="pks-saved-bar">
+      <div class="pks-sw">
+        <select id="${pre}_saved" data-saved-cat="${category || ""}" onchange="onSavedSelect('${pre}')">${optsSaved(category)}</select>
+      </div>
+    </div>
     <div class="field">
       <label>Pokémon</label>
       <div class="pks-sw"><select id="${pre}_p">${optsPokemon(category)}</select></div>
@@ -977,6 +1134,11 @@ function pokemonFormHTML(pre, category) {
         </div>
       </div>
     </div>
+    <div class="pks-save-row">
+      <input type="text" id="${pre}_label" maxlength="40" placeholder="Save as… (optional)">
+      <button class="pks-save-btn" type="button" onclick="saveCurrentPokemon('${pre}')">💾 Save</button>
+    </div>
+    <div class="pks-save-msg" id="${pre}_msg"></div>
   `;
 }
 
@@ -986,6 +1148,398 @@ function toggleAccordion(id) {
   if (!body) return;
   const isOpen = body.classList.toggle('open');
   if (arrow) arrow.textContent = isOpen ? '▲' : '▼';
+}
+
+/* ===== Saved Pokémon (localStorage) · Export · Import ===== */
+// Separate key from the Japanese edition so the two never mix if they share an origin
+const SAVED_KEY = "pks_ing_sim_saved_pokemon_en_v1";
+const SAVED_MAX = 200;
+let savedPokemon = []; // [{id,label,p,lv,pat,nu,nd,subs}]
+
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+function newSavedId() {
+  return Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
+}
+
+// Validate values on save / import (so malformed JSON can't break anything)
+function sanitizeSaved(raw) {
+  if (!raw || typeof raw !== "object") return null;
+  const p = String(raw.p ?? "").trim().slice(0, 60);
+  if (!p) return null;
+  let lv = Math.round(Number(raw.lv));
+  if (!Number.isFinite(lv)) lv = 50;
+  lv = Math.min(100, Math.max(1, lv));
+  const pat = PATTERNS.includes(raw.pat) ? raw.pat : "aab";
+  const nu = NATURES_UP.some(([v]) => v === raw.nu) ? raw.nu : "other";
+  const nd = NATURES_DOWN.some(([v]) => v === raw.nd) ? raw.nd : "other";
+  const subsIn = Array.isArray(raw.subs) ? raw.subs : [];
+  const subs = SUB_IDS.map((_, i) => SUB_SKILLS.includes(subsIn[i]) ? subsIn[i] : "Other");
+  const label = String(raw.label ?? "").trim().slice(0, 40) || `${p} Lv${lv}`;
+  const id = (typeof raw.id === "string" && /^[a-z0-9]{4,24}$/i.test(raw.id)) ? raw.id : newSavedId();
+  return { id, label, p, lv, pat, nu, nd, subs };
+}
+
+function sameContent(a, b) {
+  return a.p === b.p && a.lv === b.lv && a.pat === b.pat && a.nu === b.nu && a.nd === b.nd
+      && a.subs.join("|") === b.subs.join("|");
+}
+
+function uniqueLabel(base) {
+  let label = base, n = 2;
+  while (savedPokemon.some(s => s.label === label)) label = `${base} (${n++})`;
+  return label;
+}
+
+function loadSavedFromStorage() {
+  try {
+    const raw = localStorage.getItem(SAVED_KEY);
+    if (!raw) { savedPokemon = []; return true; }
+    const arr = JSON.parse(raw);
+    savedPokemon = (Array.isArray(arr) ? arr : []).map(sanitizeSaved).filter(Boolean).slice(0, SAVED_MAX);
+    return true;
+  } catch (e) {
+    console.warn("Failed to load saved data:", e);
+    savedPokemon = [];
+    return false;
+  }
+}
+
+function persistSaved() {
+  try {
+    localStorage.setItem(SAVED_KEY, JSON.stringify(savedPokemon));
+    return true;
+  } catch (e) {
+    console.warn("Failed to write saved data:", e);
+    return false;
+  }
+}
+
+const msgTimers = {};
+function showMsg(id, text, ok = true, ms = 4000) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.textContent = text;
+  el.style.color = ok ? "var(--pks-green)" : "var(--pks-red)";
+  clearTimeout(msgTimers[id]);
+  msgTimers[id] = setTimeout(() => { el.textContent = ""; }, ms);
+}
+
+// Only offer saved Pokémon that match the slot's category (Berry / Ingredient / Skill)
+function savedForCategory(category) {
+  if (!category) return savedPokemon;
+  return savedPokemon.filter(s => {
+    const p = pokemonDB.find(x => x.name === s.p);
+    return p && p.category === category;
+  });
+}
+
+function optsSaved(category) {
+  const list = savedForCategory(category);
+  const head = `<option value="">📂 Load a saved Pokémon ${list.length ? `(${list.length})` : "(none)"}</option>`;
+  return head + list.map(s => {
+    const extra = s.label.includes(s.p) ? "" : ` | ${s.p} Lv${s.lv}`;
+    return `<option value="${esc(s.id)}">${esc(s.label + extra)}</option>`;
+  }).join("");
+}
+
+function refreshAllSavedSelects() {
+  document.querySelectorAll("select[data-saved-cat]").forEach(el => {
+    el.innerHTML = optsSaved(el.dataset.savedCat || "");
+  });
+}
+
+// Apply saved data to a form
+function applyPokemonData(pre, data) {
+  const pEl = document.getElementById(`${pre}_p`);
+  if (!pEl) return false;
+  if (![...pEl.options].some(o => o.value === data.p)) return false;
+  pEl.value = data.p;
+  const set = (suffix, val) => {
+    const el = document.getElementById(`${pre}_${suffix}`);
+    if (el) el.value = val;
+  };
+  set("lv", data.lv);
+  set("pat", data.pat);
+  set("nu", data.nu);
+  set("nd", data.nd);
+  SUB_IDS.forEach((sid, i) => set(sid, data.subs[i]));
+  const hasDetail = data.nu !== "other" || data.nd !== "other" || data.subs.some(s => s !== "Other");
+  if (hasDetail) {
+    document.getElementById(`${pre}_detail`)?.classList.add("open");
+    const arrow = document.getElementById(`${pre}_detail_arrow`);
+    if (arrow) arrow.textContent = "▲";
+  }
+  return true;
+}
+
+function onSavedSelect(pre) {
+  const sel = document.getElementById(`${pre}_saved`);
+  if (!sel) return;
+  const id = sel.value;
+  if (!id) return;
+  sel.value = "";
+  const data = savedPokemon.find(s => s.id === id);
+  if (!data) { showMsg(`${pre}_msg`, "Saved data not found", false); return; }
+  if (applyPokemonData(pre, data)) {
+    const lab = document.getElementById(`${pre}_label`);
+    if (lab) lab.value = data.label;
+    showMsg(`${pre}_msg`, `Loaded "${data.label}"`);
+  } else {
+    showMsg(`${pre}_msg`, "This Pokémon can't be selected in this slot", false);
+  }
+}
+
+function saveCurrentPokemon(pre) {
+  const g = s => document.getElementById(`${pre}_${s}`)?.value;
+  const p = g("p");
+  if (!p) { showMsg(`${pre}_msg`, "Please choose a Pokémon", false); return; }
+  let lv = Math.round(Number(g("lv"))) || 50;
+  lv = Math.min(100, Math.max(1, lv));
+  const entry = {
+    p, lv,
+    pat: g("pat") || "aab",
+    nu: g("nu") || "other",
+    nd: g("nd") || "other",
+    subs: SUB_IDS.map(sid => g(sid) || "Other")
+  };
+
+  const typed = (g("label") || "").trim().slice(0, 40);
+  let label = typed;
+  let idx = -1;
+  if (typed) {
+    idx = savedPokemon.findIndex(s => s.label === typed); // same name = overwrite
+  } else {
+    label = uniqueLabel(`${p} Lv${lv}`);                  // no name = auto-number
+  }
+
+  let overwrote = false;
+  if (idx >= 0) {
+    savedPokemon[idx] = { ...entry, id: savedPokemon[idx].id, label };
+    overwrote = true;
+  } else {
+    if (savedPokemon.length >= SAVED_MAX) {
+      showMsg(`${pre}_msg`, `You can save up to ${SAVED_MAX} Pokémon. Please delete some you no longer need`, false);
+      return;
+    }
+    savedPokemon.push({ ...entry, id: newSavedId(), label });
+  }
+
+  const labEl = document.getElementById(`${pre}_label`);
+  if (labEl) labEl.value = label;
+
+  const ok = persistSaved();
+  refreshAllSavedSelects();
+  renderSavedManager();
+  if (ok) {
+    showMsg(`${pre}_msg`, overwrote ? `Overwrote "${label}"` : `Saved "${label}"`);
+  } else {
+    showMsg(`${pre}_msg`, "Couldn't save to this device (check your browser settings). Please back up with \"Export\"", false, 8000);
+  }
+}
+
+// Delete confirmation is done on the page (not confirm()), so it also works in in-app browsers / iframes
+let pendingDeleteId = null;
+let pendingDeleteAll = false;
+
+function renderSavedManager() {
+  const box = document.getElementById("savedList");
+  if (!box) return;
+  if (!savedPokemon.length) {
+    pendingDeleteId = null;
+    pendingDeleteAll = false;
+    box.innerHTML = `<div class="pks-saved-empty">No saved Pokémon yet. Use "💾 Save" on any card to add one.</div>`;
+  } else {
+    box.innerHTML = savedPokemon.map(s => {
+      const meta = `${esc(s.p)} / Lv${s.lv} / ${esc(s.pat)}`;
+      if (s.id === pendingDeleteId) {
+        return `
+          <div class="pks-saved-item confirming">
+            <div class="pks-saved-main">
+              <div class="pks-saved-name">${esc(s.label)}</div>
+              <div class="pks-saved-meta" style="color:var(--pks-red);">Delete this one?</div>
+            </div>
+            <div class="pks-saved-actions">
+              <button class="pks-del-btn danger" type="button" onclick="confirmDeleteSaved('${esc(s.id)}')">Delete</button>
+              <button class="pks-del-btn cancel" type="button" onclick="cancelDeleteSaved()">Cancel</button>
+            </div>
+          </div>`;
+      }
+      return `
+        <div class="pks-saved-item">
+          <div class="pks-saved-main">
+            <div class="pks-saved-name">${esc(s.label)}</div>
+            <div class="pks-saved-meta">${meta}</div>
+          </div>
+          <button class="pks-del-btn" type="button" onclick="askDeleteSaved('${esc(s.id)}')">Delete</button>
+        </div>`;
+    }).join("");
+  }
+  renderDeleteAllBox();
+}
+
+function renderDeleteAllBox() {
+  const el = document.getElementById("savedDeleteAllBox");
+  if (!el) return;
+  if (!savedPokemon.length) { el.innerHTML = ""; return; }
+  if (pendingDeleteAll) {
+    el.innerHTML = `
+      <div class="pks-delall-confirm">
+        <p>This will delete all ${savedPokemon.length} saved Pokémon. This can't be undone. Are you sure?</p>
+        <div class="pks-saved-actions">
+          <button class="pks-del-btn danger" type="button" onclick="confirmDeleteAllSaved()">Delete all</button>
+          <button class="pks-del-btn cancel" type="button" onclick="cancelDeleteAllSaved()">Cancel</button>
+        </div>
+      </div>`;
+  } else {
+    el.innerHTML = `<div class="pks-delall-box"><button class="pks-danger-link" type="button" onclick="askDeleteAllSaved()">Delete all saved data</button></div>`;
+  }
+}
+
+function askDeleteSaved(id) {
+  pendingDeleteId = id;
+  pendingDeleteAll = false;
+  renderSavedManager();
+}
+function cancelDeleteSaved() {
+  pendingDeleteId = null;
+  renderSavedManager();
+}
+function confirmDeleteSaved(id) {
+  const target = savedPokemon.find(s => s.id === id);
+  pendingDeleteId = null;
+  if (!target) { renderSavedManager(); return; }
+  savedPokemon = savedPokemon.filter(s => s.id !== id);
+  const ok = persistSaved();
+  refreshAllSavedSelects();
+  renderSavedManager();
+  showMsg("savedMsg", ok ? `Deleted "${target.label}"` : "Deleted, but couldn't update the data saved on this device", ok);
+}
+
+function askDeleteAllSaved() {
+  pendingDeleteAll = true;
+  pendingDeleteId = null;
+  renderSavedManager();
+}
+function cancelDeleteAllSaved() {
+  pendingDeleteAll = false;
+  renderSavedManager();
+}
+function confirmDeleteAllSaved() {
+  pendingDeleteAll = false;
+  pendingDeleteId = null;
+  savedPokemon = [];
+  const ok = persistSaved();
+  refreshAllSavedSelects();
+  renderSavedManager();
+  showMsg("savedMsg", ok ? "Deleted all saved Pokémon" : "Deleted, but couldn't update the data saved on this device", ok);
+}
+
+/* --- Export --- */
+function buildExportJSON() {
+  return JSON.stringify({
+    app: "pokesleep-ingredient-simulator-en",
+    version: 1,
+    exportedAt: new Date().toISOString(),
+    pokemon: savedPokemon
+  }, null, 2);
+}
+
+function exportDownload() {
+  if (!savedPokemon.length) { showMsg("savedMsg", "There's nothing to export yet", false); return; }
+  try {
+    const blob = new Blob([buildExportJSON()], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    const ymd = new Date().toISOString().slice(0, 10).replace(/-/g, "");
+    a.href = url;
+    a.download = `pokesleep_saved_pokemon_en_${ymd}.json`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    showMsg("savedMsg", "File exported. If nothing was saved, try \"Copy JSON\" instead", true, 7000);
+  } catch (e) {
+    console.warn(e);
+    showMsg("savedMsg", "Couldn't export the file. Please try \"Copy JSON\" instead", false, 7000);
+  }
+}
+
+async function exportCopy() {
+  if (!savedPokemon.length) { showMsg("savedMsg", "There's nothing to copy yet", false); return; }
+  const json = buildExportJSON();
+  const ta = document.getElementById("exportText");
+  try {
+    await navigator.clipboard.writeText(json);
+    showMsg("savedMsg", "JSON copied. Paste it into a notes app to keep it safe", true, 7000);
+  } catch (e) {
+    // Clipboard unavailable: show the text so it can be copied by hand
+    if (ta) {
+      ta.value = json;
+      ta.classList.remove("pks-hidden");
+      ta.focus();
+      ta.select();
+    }
+    showMsg("savedMsg", "Couldn't copy automatically. Please select all the text below and copy it", false, 9000);
+  }
+}
+
+/* --- Import --- */
+function importFromText(text) {
+  let data;
+  try { data = JSON.parse(text); }
+  catch (e) { showMsg("savedMsg", "Couldn't read that as JSON. Please check the content", false, 7000); return false; }
+
+  const arr = Array.isArray(data) ? data : (data && Array.isArray(data.pokemon) ? data.pokemon : null);
+  if (!arr) { showMsg("savedMsg", "This data format isn't supported", false, 7000); return false; }
+
+  let added = 0, dup = 0, invalid = 0, unknown = 0, over = 0;
+  for (const raw of arr) {
+    const s = sanitizeSaved(raw);
+    if (!s) { invalid++; continue; }
+    if (pokemonDB.length && !pokemonDB.some(p => p.name === s.p)) { unknown++; continue; }
+    if (savedPokemon.some(x => sameContent(x, s))) { dup++; continue; }
+    if (savedPokemon.length >= SAVED_MAX) { over++; continue; }
+    s.id = newSavedId();
+    s.label = uniqueLabel(s.label);
+    savedPokemon.push(s);
+    added++;
+  }
+
+  const ok = persistSaved();
+  refreshAllSavedSelects();
+  renderSavedManager();
+
+  const parts = [`${added} added`];
+  if (dup)     parts.push(`${dup} identical skipped`);
+  if (unknown) parts.push(`${unknown} unknown Pokémon skipped`);
+  if (invalid) parts.push(`${invalid} invalid skipped`);
+  if (over)    parts.push(`${over} over the limit skipped`);
+  if (!ok)     parts.push("note: couldn't save to this device");
+  showMsg("savedMsg", parts.join(" / "), ok && added > 0, 9000);
+  return true;
+}
+
+function importFromFile(input) {
+  const f = input.files && input.files[0];
+  if (!f) return;
+  if (f.size > 1024 * 1024) {
+    showMsg("savedMsg", "That file is too large (1 MB max)", false);
+    input.value = "";
+    return;
+  }
+  const reader = new FileReader();
+  reader.onload = () => { importFromText(String(reader.result)); input.value = ""; };
+  reader.onerror = () => { showMsg("savedMsg", "Couldn't read that file", false); input.value = ""; };
+  reader.readAsText(f);
+}
+
+function importFromTextarea() {
+  const ta = document.getElementById("importText");
+  const text = (ta?.value || "").trim();
+  if (!text) { showMsg("savedMsg", "Please paste some JSON first", false); return; }
+  if (importFromText(text) && ta) ta.value = "";
 }
 
 /* ===== Stock rows ===== */
@@ -1126,6 +1680,7 @@ function calcWeekly(entry, teamOtebonus = 0) {
   // teamOtebonus: sum of (Helping Bonus Pokémon on the team) × 5%
   if (!entry) return {};
   const {pokemon, level, pattern, natureUp, natureDown, subs} = entry;
+  const ev = getEventBuff(); // event buff (when OFF: add=0, mult=1)
 
   // ── Filter by sub-skill unlock level ──
   // Lv10: slot 1, Lv25: slot 2, Lv50: slot 3, Lv70: slot 4, Lv80: slot 5
@@ -1198,6 +1753,8 @@ function calcWeekly(entry, teamOtebonus = 0) {
       else if (t === "b") { ing = pokemon.ingredientB; cnt = pokemon["3b"] ?? 0; }
       else                { ing = pokemon.ingredientC; cnt = pokemon["3c"] ?? 0; }
     }
+    // Event buff: Ingredient-type Pokémon get extra ingredients (also reflected in the overflow calculation)
+    if (ing && cnt > 0 && pokemon.category === "Ingredient") cnt += ev.add;
     slotIngMap[slot] = { ing, cnt };
     if (ing && cnt > 0) avgIngPerHelp += cnt * sp;
   }
@@ -1276,7 +1833,8 @@ function calcWeekly(entry, teamOtebonus = 0) {
       skillTriggers = skillTriggersAwake7 + skillTriggersSleep7;
     }
 
-    const ingPerTrigger = pokemon.skillIngCount / pokemon.skillIngredients.length;
+    // Event buff: multiply the ingredients gained from Ingredient Select
+    const ingPerTrigger = (pokemon.skillIngCount * ev.mult) / pokemon.skillIngredients.length;
     for (const ingName of pokemon.skillIngredients) {
       const k = normIng(ingName);
       skillIngResult[k] = (skillIngResult[k] ?? 0) + skillTriggers * ingPerTrigger;
@@ -1315,7 +1873,7 @@ function calcWeekly(entry, teamOtebonus = 0) {
   return result;
 }
 
-/* ===== Save/restore Pokémon settings ===== */
+/* ===== Save/restore Pokémon settings (kept when moving between steps) ===== */
 function savePokemonSettings() {
   const saved = [];
   for (const slot of pokemonSlots) {
@@ -1398,15 +1956,15 @@ function calcSkillTriggersInfo(entry, teamOtebonus) {
   const levelCoef = 1 - (level - 1) * LEVEL_TIME_COEF;
 
   // Helping Speed modifier
+  // Same method as calcWeekly: own Helping Speed M/S + team's Helping Bonus summed, capped at 35%
   const speedM = activeSubs.filter(s => s === "Helping Speed M").length;
   const speedS = activeSubs.filter(s => s === "Helping Speed S").length;
-  const oteBonus = activeSubs.filter(s => s === "Helping Bonus").length;
   let tf = 1.0;
   if (natureUp === "speedUp") tf *= 0.9;
   if (natureDown === "speedDown") tf *= 1.075;
-  tf *= Math.pow(0.86, speedM);
-  tf *= Math.pow(0.93, speedS);
-  tf *= (1 - Math.min(teamOtebonus, 0.35));
+  const personalBonus = speedM * 0.14 + speedS * 0.07;
+  const totalBonus = Math.min(personalBonus + teamOtebonus, 0.35);
+  tf *= (1 - totalBonus);
   const campCoef = campTicket ? (1 / 1.2) : 1.0;
   const interval = (pokemon.helpTime * levelCoef * tf * campCoef) / BASE_DIVISOR;
   const hpw = WEEK_SECONDS / interval;
@@ -1425,12 +1983,14 @@ function calcSkillTriggersInfo(entry, teamOtebonus) {
     const fr = (pokemon.ingredientFindRate ?? 0) / 100;
     const berryPerHelp = (pokemon.category === "Berry" ? 2 : 1);
     const slots = level < 30 ? [1] : level < 60 ? [1,2] : [1,2,3];
+    const evAdd = getEventBuff().add;
     let avgIng = 0;
     for (const slot of slots) {
       let cnt = 0;
       if (slot === 1) cnt = pokemon["1a"] ?? 0;
       else if (slot === 2) cnt = pokemon["2a"] ?? 0;
       else cnt = pokemon["3a"] ?? 0;
+      if (cnt > 0 && pokemon.category === "Ingredient") cnt += evAdd; // event buff
       avgIng += cnt / slots.length;
     }
     const avgPerHelp = (1 - fr) * berryPerHelp + fr * avgIng;
@@ -1661,6 +2221,12 @@ function calculate() {
 function renderResult(have, need, surplus, perPokemon, allOk, minRatio, surplusDays, stockMap={}, teamOtebonus=0, actualDays=null) {
   const needKeys = Object.keys(need);
 
+  // Event buff indicator
+  const evInfo = getEventBuff();
+  const evNote = evInfo.on
+    ? `<div style="font-size:11px;color:var(--pks-star);margin-top:4px;">🎉 Event buff active (Ingredient-type +${evInfo.add} / Ingredient Select ×${evInfo.mult})</div>`
+    : "";
+
   // Ingredient sufficiency bar
   const ingHtml = needKeys.map(k => {
     const h=have[k]??0, n=need[k];
@@ -1752,6 +2318,7 @@ function renderResult(have, need, surplus, perPokemon, allOk, minRatio, surplusD
       <div class="pks-verdict-main ${allOk?"ok":"ng"}">${allOk?"✅ Ready for All 21 Meals!":"❌ Ingredients Are Short"}</div>
       <div class="pks-verdict-sub">Simulation results for 1 week (7 days), 21 meals</div>
       ${teamOtebonus > 0 ? `<div style="font-size:11px;color:var(--pks-green);margin-top:4px;">🤝 Team Helping Bonus +${Math.round(teamOtebonus*100)}% (from Helping Bonus Pokémon on the team, capped at 35%)</div>` : ""}
+      ${evNote}
       ${Object.keys(stockMap).length > 0 ? `<div style="font-size:11px;color:var(--pks-text-dim);margin-top:4px;">Includes starting stock</div>` : ""}
     </div>
     ${needKeys.length?`<div class="pks-result-section-title">Ingredient Sufficiency (Weekly)</div><div class="pks-ing-grid">${ingHtml}</div>`:""}
