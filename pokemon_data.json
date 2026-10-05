@@ -2545,7 +2545,7 @@
   "skillRate": 4.7,
   "skillType": "Charge Energy S",
   "type": "Poison",
-  "category": "Ingredients",
+  "category": "Ingredient",
   "ingredientA": "Tasty Mushroom",
   "ingredientB": "Fancy Egg",
   "ingredientC": "Snoozy Tomato",
