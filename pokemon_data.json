@@ -509,7 +509,7 @@
     "name": "Gengar",
     "no": 94,
     "helpTime": 2200,
-    "ingredientFindRate": 16.08,
+    "ingredientFindRate": 16.6,
     "skillRate": 2.39,
     "skillType": "Charge Energy S (Random Species)",
     "type": "Ghost",
